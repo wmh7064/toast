@@ -74,16 +74,16 @@ Options:
 ###3、	各语言项目的覆盖率收集     
 #####（1）c/c++项目    
 unittest_run对c/c++的覆盖率收集是基于gcov/lcov的。      
-1. •为了能够收集到覆盖率信息，根据gcov的原理需要在编译阶段加入2个编译选项: -fprofile-arcs和-ftest-coverage或者--coverage（makefile里面可以加在CFLAGS和LINKERCXX上）；    
-1. •建议去掉-O2以上级别的代码优化选项；    
-1. •如果连接的时候出现undefined reference to ‘__gcov_init’错误，则还要加上-lgocv(makefile里面可以加在LDFLAGS上)
-详见http://sdet.org/?p=212     
+*  为了能够收集到覆盖率信息，根据gcov的原理需要在编译阶段加入2个编译选项: -fprofile-arcs和-ftest-coverage或者--coverage（makefile里面可以加在CFLAGS和LINKERCXX上）；    
+*  建议去掉-O2以上级别的代码优化选项；    
+*  如果连接的时候出现undefined reference to ‘__gcov_init’错误，则还要加上-lgocv(makefile里面可以加在LDFLAGS上)
+ 详见http://sdet.org/?p=212     
        事例：    
 unittest_run –s “http://xxxx/trunk/”-u “makecommand;runcase command” -y 
 
-	（2）maven构建的java项目：
-•	unittest_run是基于cobertura-maven-plugin插件来获取maven项目的覆盖率的。
-•	在pom.xml中进行相应的配置，然后通过maven clean cobertura:cobertura命令执行用例并产生覆盖率数据：
+###（2）maven构建的java项目：
+*  unittest_run是基于cobertura-maven-plugin插件来获取maven项目的覆盖率的。
+*  在pom.xml中进行相应的配置，然后通过maven clean cobertura:cobertura命令执行用例并产生覆盖率数据：
 <project>  
     <reporting>  
         <plugins>  
@@ -96,50 +96,49 @@ unittest_run –s “http://xxxx/trunk/”-u “makecommand;runcase command” -
     </reporting>  
 </project>
 
-•	执行命令：maven clean cobertura:cobertura unittest_run在执行完命令后会调用cobertua-merge.bat插件合并maven cobertura:cobertura产生的.ser覆盖率数据文件并生成html形式的覆盖率报告。
-•	示例（-M指定该任务是maven项目）
-unittest_run -s “http://xxxx/trunk/”-u “maven clean cobertura:cobertura” -y -M
+* 执行命令：maven clean cobertura:cobertura unittest_run在执行完命令后会调用cobertua-merge.bat插件合并maven cobertura:cobertura产生的.ser覆盖率数据文件并生成html形式的覆盖率报告。       
+* 示例（-M指定该任务是maven项目）     
+unittest_run -s “http://xxxx/trunk/”-u “maven clean cobertura:cobertura” -y -M    
 
-（3）python项目：
-•	单元测试框架，建议使用PyUnit，也是Python2.4以上版本默认内置的单元测试框架；
-•	关于代码覆盖率，最流行的是 coverage.py，unittest_run目前仅仅支持这一种代码覆盖率的收集与展示；coverage安装： http://nedbatchelder.com/code/coverage/install.html#install
-•	示例：
-unittest_run -s “http://xxxx/trunk/” -u “coverage run testcase.py” -y --python
+###（3）python项目：    
+* 单元测试框架，建议使用PyUnit，也是Python2.4以上版本默认内置的单元测试框架；     
+* 关于代码覆盖率，最流行的是 coverage.py，unittest_run目前仅仅支持这一种代码覆盖率的收集与展示；coverage安装：     http://nedbatchelder.com/code/coverage/install.html#install     
+*示例：     
+unittest_run -s “http://xxxx/trunk/” -u “coverage run testcase.py” -y --python    
 
-（4）php项目：
-•	安装phpunit：这也是unittest_run唯一支持的php单元测试运行方式； 
-•	运行时刻，使用--coverage-html 保存测试覆盖率数据；
-•	示例：
-unittest_run -s “http://xxxx/trunk/” -u “phpunit --coverage-html ./report TestScript” -y --php
+###（4）php项目：    
+* 安装phpunit：这也是unittest_run唯一支持的php单元测试运行方式；     
+* 运行时刻，使用--coverage-html 保存测试覆盖率数据；    
+* 示例：    
+unittest_run -s “http://xxxx/trunk/” -u “phpunit --coverage-html ./report TestScript” -y --php    
 
+###（5）perl项目：       
+建议使用Test::Class 做单元测试。       
+* 安装Test::Class和Devel::Cover这个非标准模块，可以使用下面命令安装：     
+sudo perl -MCPAN -e'install Test::Class';     
+sudo  perl -MCPAN -e 'install Devel::Cover';     
+若Devel::Cover如果安装不成功，则下载源码：     
+ http://search.cpan.org/~pjcj/Devel-Cover-0.92/lib/Devel/Cover.pm#___top    
+源码安装：    
+perl MakeFile.PL     
+make install      
+关于Can't locate CGI.pm in @INC的解决办法：    
+#perl -e shell -MCPAN     
+>install CGI    
 
-（5）perl项目：
-建议使用Test::Class 做单元测试。
-•	安装Test::Class和Devel::Cover这个非标准模块，可以使用下面命令安装：
-sudo perl -MCPAN -e'install Test::Class';
-sudo  perl -MCPAN -e 'install Devel::Cover';
-若Devel::Cover如果安装不成功，则下载源码：
- http://search.cpan.org/~pjcj/Devel-Cover-0.92/lib/Devel/Cover.pm#___top
-源码安装：
-perl MakeFile.PL
-make install
-关于Can't locate CGI.pm in @INC的解决办法：
-#perl -e shell -MCPAN
->install CGI
+* 运行：    
+使用cover –delete;perl -MDevel::Cover yourprog args.pl; cover html; 运行并产品html格式覆盖率结果；    
+* 示例：    
+unittest_run –s “http://xxxx/trunk/” –u “perl -MDevel::Cover yourprogram args; cover -report html” –y ––perl;     
 
-•	运行时刻：
-使用cover –delete;perl -MDevel::Cover yourprog args.pl; cover html; 运行并产品html格式覆盖率结果；
-•	示例：
-unittest_run –s “http://xxxx/trunk/” –u “perl -MDevel::Cover yourprogram args; cover -report html” –y ––perl;
-
-（6）shell项目；
-•	支持shUnit2 + shcov的单元测试和覆盖率收集。shcov相关：http://code.google.com/p/shcov/
-    http://code.google.com/p/shcov/wiki/Usage
-三、	如何扩展其他类型语言的单元测试及覆盖率收集
-1、任务执行过程：
- 1）环境准备：before_run
- 2）执行命令: runing
- 3）覆盖率收集
- 4）数据清理：clean_data
-2、新语言单元测试的支持：
-其中步骤1）2）4）都可直接继承至Test.py,只需实现步骤3）完成覆盖率的收集和保存即可。
+###（6）shell项目；    
+* 支持shUnit2 + shcov的单元测试和覆盖率收集。shcov相关：http://code.google.com/p/shcov/    
+    http://code.google.com/p/shcov/wiki/Usage    
+##三、	如何扩展其他类型语言的单元测试及覆盖率收集
+###1、任务执行过程：    
+ 1）环境准备：before_run     
+ 2）执行命令: runing    
+ 3）覆盖率收集    
+ 4）数据清理：clean_data    
+###2、新语言单元测试的支持：    
+其中步骤1）2）4）都可直接继承至Test.py,只需实现步骤3）完成覆盖率的收集和保存即可。    
