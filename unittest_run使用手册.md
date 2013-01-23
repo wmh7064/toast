@@ -20,7 +20,8 @@
       
 ##二、unittest_run使用   
 ###1、配置文件unittest_run.conf    
-######unittest_run在执行任务时需要从配置文件中读取相关数据，其中配置文件默认内容如下，用户需要对各选项的值修改为有效值。   
+unittest_run在执行任务时需要从配置文件中读取相关数据，其中配置文件默认内容如下，用户需要对各选项的值修改为有效值。
+
 [UnitTest]   
 SvnAccount = 【svn账号】   
 SvnPwd = 【svn密码】   
@@ -35,9 +36,7 @@ Lcov = /home/a/bin/lcov
 Genhtml = /home/a/bin/genhtml    
 MvnMerge = /home/a/bin/toast/script/cobertura-1.9.4.1/cobertura-merge.sh    
 MvnReport = /home/a/bin/toast/script/cobertura-1.9.4.1/cobertura-report.sh    
-MvnPath   = /home/a/bin/toast/script/apache-maven-2.2.1/bin:    
-    
-
+MvnPath   = /home/a/bin/toast/script/apache-maven-2.2.1/bin: 
 
 ###2、怎样使用unittest_run    
 ######（1）基本命令：    
@@ -46,6 +45,7 @@ MvnPath   = /home/a/bin/toast/script/apache-maven-2.2.1/bin:
 其中-s选项可替换为-l选项，表示执行本地的项目，对应的选项值设为本地项目的directory。     
 
 ######（2）其他选项说明
+
 Msic:     
   -h, --help                          Print this for help,then exit    
 Operation:     
@@ -69,7 +69,7 @@ Options:
   --python  				         support python project     
   --php  				         support php project     
   --perl                                         support perl project      
-  --lua                                          support lua project     
+  --lua                                          support lua project    
 
 ###3、	各语言项目的覆盖率收集     
 #####（1）c/c++项目    
@@ -84,6 +84,7 @@ unittest_run –s “http://xxxx/trunk/”-u “makecommand;runcase command” -
 ###（2）maven构建的java项目：
 *  unittest_run是基于cobertura-maven-plugin插件来获取maven项目的覆盖率的。
 *  在pom.xml中进行相应的配置，然后通过maven clean cobertura:cobertura命令执行用例并产生覆盖率数据：
+```xml
 <project>  
     <reporting>  
         <plugins>  
@@ -95,6 +96,7 @@ unittest_run –s “http://xxxx/trunk/”-u “makecommand;runcase command” -
         </plugins>  
     </reporting>  
 </project>
+```
 
 * 执行命令：maven clean cobertura:cobertura unittest_run在执行完命令后会调用cobertua-merge.bat插件合并maven cobertura:cobertura产生的.ser覆盖率数据文件并生成html形式的覆盖率报告。       
 * 示例（-M指定该任务是maven项目）     
@@ -132,7 +134,7 @@ perl -e shell -MCPAN
 unittest_run –s “http://xxxx/trunk/” –u “perl -MDevel::Cover yourprogram args; cover -report html” –y ––perl;     
 
 ###（6）shell项目；    
-* 支持shUnit2 + shcov的单元测试和覆盖率收集。shcov相关：http://code.google.com/p/shcov/    
+ 支持shUnit2 + shcov的单元测试和覆盖率收集。shcov相关：http://code.google.com/p/shcov/    
     http://code.google.com/p/shcov/wiki/Usage     
 ##三、	如何扩展其他类型语言的单元测试及覆盖率收集    
 ###1、任务执行过程：       
