@@ -10,63 +10,66 @@
 ###### C/C++,通过maven执行的java项目，PHP，Python，Perl，Shell，Lua
 ###2、代码结构：    
     
-#######图1.Unittest_run代码结构   
+图1.Unittest_run代码结构   
 ######（1）	common目录包括command.py和svn.py两个公共脚本供其他脚本调用。    
 ######•	command.py主要功能：通过DoCmd和DoCmd1执行命令以及通过WriteFile和ReadFile记录和读取任务执行log；   
 ######•	svn.py用于执行svn相关命令：svn co/update/log等   
 ######（2）	test目录是处理各种语言单元测试的脚本：    
 ######Test.py是基类，包含环境准备、svn co、安装依赖包、执行用例、清理数据等功能。ctest.py,jtest.py,phptest.py等均继承至Test。   
-######3）unittest_run为各种类型任务的执行入口。    
-二、unittest_run使用
-1、配置文件unittest_run.conf
-unittest_run在执行任务时需要从配置文件中读取相关数据，其中配置文件默认内容如下，用户需要对各选项的值修改为有效值。
-[UnitTest]
-SvnAccount = 【svn账号】
-SvnPwd = 【svn密码】
-BasePath =/tmp/unittest/ 【单元测试运行临时目录】
-Htdocs = /home/a/share/htdocs/ 【htdoc目录，若本地需要保存覆盖率，则将数据拷贝至此】
-ServerIp = xxx.xxx.xxx.xxx 【公用服务器ip，用于保存覆盖率数据】
-ServerHtdocs =/home/admin/htdocs/ 【Server上的Htdocs目录】
-ServerAccount =admin 【server公用账号】
-ServerPassword =admin 【Server密码】
-JavaHome  =/usr/lib/jvm/java-1.6.0-openjdk
-Lcov = /home/a/bin/lcov
-Genhtml = /home/a/bin/genhtml
-MvnMerge = /home/a/bin/toast/script/cobertura-1.9.4.1/cobertura-merge.sh
-MvnReport = /home/a/bin/toast/script/cobertura-1.9.4.1/cobertura-report.sh
-MvnPath   = /home/a/bin/toast/script/apache-maven-2.2.1/bin:
+######（3）unittest_run为各种类型任务的执行入口。  
+      
+##二、unittest_run使用   
+###1、配置文件unittest_run.conf    
+######unittest_run在执行任务时需要从配置文件中读取相关数据，其中配置文件默认内容如下，用户需要对各选项的值修改为有效值。   
+[UnitTest]   
+SvnAccount = 【svn账号】   
+SvnPwd = 【svn密码】   
+BasePath =/tmp/unittest/ 【单元测试运行临时目录】   
+Htdocs = /home/a/share/htdocs/ 【htdoc目录，若本地需要保存覆盖率，则将数据拷贝至此】   
+ServerIp = xxx.xxx.xxx.xxx 【公用服务器ip，用于保存覆盖率数据】   
+ServerHtdocs =/home/admin/htdocs/ 【Server上的Htdocs目录】    
+ServerAccount =admin 【server公用账号】    
+ServerPassword =admin 【Server密码】    
+JavaHome  =/usr/lib/jvm/java-1.6.0-openjdk    
+Lcov = /home/a/bin/lcov    
+Genhtml = /home/a/bin/genhtml    
+MvnMerge = /home/a/bin/toast/script/cobertura-1.9.4.1/cobertura-merge.sh    
+MvnReport = /home/a/bin/toast/script/cobertura-1.9.4.1/cobertura-report.sh    
+MvnPath   = /home/a/bin/toast/script/apache-maven-2.2.1/bin:    
+    
 
 
-2、	怎样使用unittest_run
-（1）基本命令：
-/directory/unittest_run –s “svnurl” –u “command” –y [–M/-s/--python/--php/--shell/--perl/--lua]
-表示从svn上checkout代码到本地再执行command，执行完command后收集覆盖率数据，若没有-y选项则不进行覆盖率的收集。其中[]中的选项代表单元测试的类型，会影响覆盖率数据的收集，-M为maven执行的java项目，-s为scons编译执行的c/c++项目。若没有执行单元测试类型，则默认为make编译执行的c/c++项目。
-其中-s选项可替换为-l选项，表示执行本地的项目，对应的选项值设为本地项目的directory。 
-（2）其他选项说明
-Msic: 
-  -h, --help                  Print this for help,then exit
-Operation: 
-  -s, --svn                   to supply svn path for checkout. Couldn't use with -l at the same time
-  -l, --localdir              Specify the project's local directory which must be a absolute path.Couldn't use with -s
-  -u, --unitestcommands       run the unitest by these commands
-Options: 
-  -c, --configfile            Specify configfile for this script
-  -d, --debug                 Print details for every step
-  -D, --dependency            Specify packages that the program dependence on
-  -m, --makefilepath          for c or c++ specify relative path for make; for java specify the ratetivve path for run mvn
-  -M, --mvn                   for java project. Needn't -k
-  -y, --yes                   Generate coverage data for the project
-  -e, --extract               do not show the coverage data of the standard library files
-  -w, --workplace             save workplace and we can update code next time
-  -i, --ignore                ignore build error check, only effective on c/c++
-  -r, --require               Specify the spec file that we can install the dependecies for the project 
-  -n, --scons                 Compile the project by scons
-  -I, --ignore_dirs           Need not capture the coverage information for the ignore_dirs 
-  -a, --onecommand            Look at commands in -u option as just one command,will not popen multi-processes. 
-  --python  				  support python project
-  --php  				      support php project
-  --perl                      support perl project
-  --lua                        support lua project
+###2、怎样使用unittest_run    
+######（1）基本命令：    
+/directory/unittest_run –s “svnurl” –u “command” –y [–M/-s/--python/--php/--shell/--perl/--lua]    
+表示从svn上checkout代码到本地再执行command，执行完command后收集覆盖率数据，若没有-y选项则不进行覆盖率的收集。其中[]中的选项代表单元测试的类型，会影响覆盖率数据的收集，-M为maven执行的java项目，-s为scons编译执行的c/c++项目。若没有执行单元测试类型，则默认为make编译执行的c/c++项目。    
+其中-s选项可替换为-l选项，表示执行本地的项目，对应的选项值设为本地项目的directory。     
+
+######（2）其他选项说明
+Msic:     
+  -h, --help                  Print this for help,then exit    
+Operation:     
+  -s, --svn                   to supply svn path for checkout. Couldn't use with -l at the same time    
+  -l, --localdir              Specify the project's local directory which must be a absolute path.Couldn't use with -s    
+  -u, --unitestcommands       run the unitest by these commands    
+Options:     
+  -c, --configfile            Specify configfile for this script    
+  -d, --debug                 Print details for every step    
+  -D, --dependency            Specify packages that the program dependence on     
+  -m, --makefilepath          for c or c++ specify relative path for make; for java specify the ratetivve path for run mvn     
+  -M, --mvn                   for java project. Needn't -k     
+  -y, --yes                   Generate coverage data for the project     
+  -e, --extract               do not show the coverage data of the standard library files     
+  -w, --workplace             save workplace and we can update code next time     
+  -i, --ignore                ignore build error check, only effective on c/c++     
+  -r, --require               Specify the spec file that we can install the dependecies for the project     
+  -n, --scons                 Compile the project by scons    
+  -I, --ignore_dirs           Need not capture the coverage information for the ignore_dirs      
+  -a, --onecommand            Look at commands in -u option as just one command,will not popen multi-processes.     
+  --python  				  support python project     
+  --php  				      support php project     
+  --perl                      support perl project      
+  --lua                        support lua project     
 
 
 
