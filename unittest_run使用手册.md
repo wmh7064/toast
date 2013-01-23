@@ -133,12 +133,12 @@ unittest_run –s “http://xxxx/trunk/” –u “perl -MDevel::Cover yourprogr
 
 ###（6）shell项目；    
 * 支持shUnit2 + shcov的单元测试和覆盖率收集。shcov相关：http://code.google.com/p/shcov/    
-    http://code.google.com/p/shcov/wiki/Usage    
-##三、	如何扩展其他类型语言的单元测试及覆盖率收集
-###1、任务执行过程：    
- 1）环境准备：before_run     
- 2）执行命令: runing    
- 3）覆盖率收集    
- 4）数据清理：clean_data    
-###2、新语言单元测试的支持：    
-其中步骤1）2）4）都可直接继承至Test.py,只需实现步骤3）完成覆盖率的收集和保存即可。    
+    http://code.google.com/p/shcov/wiki/Usage     
+##三、	如何扩展其他类型语言的单元测试及覆盖率收集    
+###1、任务执行过程：       
+ 1）环境准备：before_run         
+ 2）执行命令: runing        
+ 3）覆盖率收集        
+ 4）数据清理：clean_data        
+###2、新语言单元测试的支持：        
+其中步骤1）2）4）都可直接继承至Test.py,只需实现步骤3）完成覆盖率的收集和保存即可。       
