@@ -47,43 +47,38 @@ MvnPath   = /home/a/bin/toast/script/apache-maven-2.2.1/bin:
 
 ######（2）其他选项说明
 Msic:     
-  -h, --help                  Print this for help,then exit    
+  -h, --help                          Print this for help,then exit    
 Operation:     
-  -s, --svn                   to supply svn path for checkout. Couldn't use with -l at the same time    
-  -l, --localdir              Specify the project's local directory which must be a absolute path.Couldn't use with -s    
-  -u, --unitestcommands       run the unitest by these commands    
+  -s, --svn                           to supply svn path for checkout. Couldn't use with -l at the same time    
+  -l, --localdir                      Specify the project's local directory which must be a absolute path.Couldn't use with -s    
+  -u, --unitestcommands               run the unitest by these commands    
 Options:     
-  -c, --configfile            Specify configfile for this script    
-  -d, --debug                 Print details for every step    
-  -D, --dependency            Specify packages that the program dependence on     
-  -m, --makefilepath          for c or c++ specify relative path for make; for java specify the ratetivve path for run mvn     
-  -M, --mvn                   for java project. Needn't -k     
-  -y, --yes                   Generate coverage data for the project     
-  -e, --extract               do not show the coverage data of the standard library files     
-  -w, --workplace             save workplace and we can update code next time     
-  -i, --ignore                ignore build error check, only effective on c/c++     
-  -r, --require               Specify the spec file that we can install the dependecies for the project     
-  -n, --scons                 Compile the project by scons    
-  -I, --ignore_dirs           Need not capture the coverage information for the ignore_dirs      
-  -a, --onecommand            Look at commands in -u option as just one command,will not popen multi-processes.     
-  --python  				  support python project     
-  --php  				      support php project     
-  --perl                      support perl project      
-  --lua                        support lua project     
+  -c, --configfile                    Specify configfile for this script    
+  -d, --debug                         Print details for every step    
+  -D, --dependency                    Specify packages that the program dependence on     
+  -m, --makefilepath                  for c or c++ specify relative path for make; for java specify the ratetivve path for run mvn     
+  -M, --mvn                           for java project. Needn't -k     
+  -y, --yes                           Generate coverage data for the project     
+  -e, --extract                       do not show the coverage data of the standard library files     
+  -w, --workplace                     save workplace and we can update code next time     
+  -i, --ignore                        ignore build error check, only effective on c/c++     
+  -r, --require                       Specify the spec file that we can install the dependecies for the project     
+  -n, --scons                         Compile the project by scons    
+  -I, --ignore_dirs                   Need not capture the coverage information for the ignore_dirs      
+  -a, --onecommand                    Look at commands in -u option as just one command,will not popen multi-processes.     
+  --python  				         support python project     
+  --php  				         support php project     
+  --perl                                         support perl project      
+  --lua                                          support lua project     
 
-
-
-
-
-
-3、	各语言项目的覆盖率收集
-（1）c/c++项目
-unittest_run对c/c++的覆盖率收集是基于gcov/lcov的。
-•	为了能够收集到覆盖率信息，根据gcov的原理需要在编译阶段加入2个编译选项: -fprofile-arcs和-ftest-coverage或者--coverage（makefile里面可以加在CFLAGS和LINKERCXX上）；
-•	建议去掉-O2以上级别的代码优化选项；
-•	如果连接的时候出现undefined reference to ‘__gcov_init’错误，则还要加上-lgocv(makefile里面可以加在LDFLAGS上)
-详见http://sdet.org/?p=212
-       事例：
+###3、	各语言项目的覆盖率收集     
+#####（1）c/c++项目    
+unittest_run对c/c++的覆盖率收集是基于gcov/lcov的。      
+1. •为了能够收集到覆盖率信息，根据gcov的原理需要在编译阶段加入2个编译选项: -fprofile-arcs和-ftest-coverage或者--coverage（makefile里面可以加在CFLAGS和LINKERCXX上）；    
+1. •建议去掉-O2以上级别的代码优化选项；    
+1. •如果连接的时候出现undefined reference to ‘__gcov_init’错误，则还要加上-lgocv(makefile里面可以加在LDFLAGS上)
+详见http://sdet.org/?p=212     
+       事例：    
 unittest_run –s “http://xxxx/trunk/”-u “makecommand;runcase command” -y 
 
 	（2）maven构建的java项目：
