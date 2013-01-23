@@ -6,16 +6,17 @@
 ###### （3）	收集代码覆盖率信息（在有选项-y的情况下才会进行收集）   
 ###### （4）	覆盖率数据保存，包括保存至本地和服务器   
 ###### （5）	数据清理   
-#### 目前unittest_run能够对以下几种类型的语言进行覆盖率的收集：  
-#### C/C++,通过maven执行的java项目，PHP，Python，Perl，Shell，Lua
-###2、代码结构：
-图1.Unittest_run代码结构
-（1）	common目录包括command.py和svn.py两个公共脚本供其他脚本调用。
-•	command.py主要功能：通过DoCmd和DoCmd1执行命令以及通过WriteFile和ReadFile记录和读取任务执行log；
-•	svn.py用于执行svn相关命令：svn co/update/log等
-（2）	test目录是处理各种语言单元测试的脚本：
-Test.py是基类，包含环境准备、svn co、安装依赖包、执行用例、清理数据等功能。ctest.py,jtest.py,phptest.py等均继承至Test。
-		（3）unittest_run为各种类型任务的执行入口。
+###### 目前unittest_run能够对以下几种类型的语言进行覆盖率的收集：  
+###### C/C++,通过maven执行的java项目，PHP，Python，Perl，Shell，Lua
+###2、代码结构：    
+    
+#######图1.Unittest_run代码结构   
+######（1）	common目录包括command.py和svn.py两个公共脚本供其他脚本调用。    
+######•	command.py主要功能：通过DoCmd和DoCmd1执行命令以及通过WriteFile和ReadFile记录和读取任务执行log；   
+######•	svn.py用于执行svn相关命令：svn co/update/log等   
+######（2）	test目录是处理各种语言单元测试的脚本：    
+######Test.py是基类，包含环境准备、svn co、安装依赖包、执行用例、清理数据等功能。ctest.py,jtest.py,phptest.py等均继承至Test。   
+######3）unittest_run为各种类型任务的执行入口。    
 二、unittest_run使用
 1、配置文件unittest_run.conf
 unittest_run在执行任务时需要从配置文件中读取相关数据，其中配置文件默认内容如下，用户需要对各选项的值修改为有效值。
