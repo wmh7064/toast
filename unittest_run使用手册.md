@@ -84,7 +84,7 @@ unittest_run –s “http://xxxx/trunk/”-u “makecommand;runcase command” -
 ###（2）maven构建的java项目：
 *  unittest_run是基于cobertura-maven-plugin插件来获取maven项目的覆盖率的。
 *  在pom.xml中进行相应的配置，然后通过maven clean cobertura:cobertura命令执行用例并产生覆盖率数据：
-\<project\>  
+<project>  
     <reporting>  
         <plugins>  
             <plugin>  
@@ -123,7 +123,7 @@ sudo  perl -MCPAN -e 'install Devel::Cover';
 perl MakeFile.PL     
 make install      
 关于Can't locate CGI.pm in @INC的解决办法：    
-#perl -e shell -MCPAN     
+perl -e shell -MCPAN     
 >install CGI    
 
 * 运行：    
