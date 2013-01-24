@@ -5,7 +5,7 @@ Toast API采用HTTP调用方式，遵守REST协议，中间数据格式采用JSO
 Toast API采用token验证方式。
 === 获取token ===
 * 登录Toast，点击右上方当前登录用户名，进入用户设置页面。点击生成身份验证密钥（即token）。
-<img src="http://rossblog-wordpress.stor.sinaapp.com/uploads/2013/01/token.png" />
+<img style="border: 2px solid #CFCFCF" src="http://rossblog-wordpress.stor.sinaapp.com/uploads/2013/01/token.png" />
 === token的有效期 ===
 目前token生成一次永久有效。再次生成，上一次的token失效。
 === token的验证使用方式 ===
