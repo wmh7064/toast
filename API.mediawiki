@@ -57,7 +57,6 @@ Toast API 采用 JSON 作为返回值格式。其中 status 和 msg 为常量，
     "rpm_url":"http://{rpm_url}"
 }]
 </pre>
-```
 |任务关联Build
 |-
 |dev_log
