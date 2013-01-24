@@ -12,9 +12,10 @@
 * 提供测试机的简单监控和管理功能，支持多测试机并行执行任务以及任务的分阶段执行；
 * TOAST目前支持常用的测试框架，Junit, Google test, Selenium，phpunit, python unit等10余种测试框架；
 
-TOAST的这种调度模式，可以支持以下两种典型的持续集成与自动化测试运行模式，
+TOAST的这种调度模式，可以支持以下两种典型的持续集成与自动化测试运行模式
 
-1. 代码check in 触发的单元测试，如下图:
+    1. 代码check in 触发的单元测试，如下图:
+![test](http://testing.etao.com/sites/default/files/check-in_0.png)
 
 
 
