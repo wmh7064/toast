@@ -48,20 +48,23 @@ Toast API 采用 JSON 作为返回值格式。其中 status 和 msg 为常量，
 |build
 |style="text-align:center"|string
 |style="text-align:center"|是(id 或 build 其一必填)
-|<pre>[{
+|```javascript
+[{
     "svn_url": "http://{svnurl}",
     "svn_version": "81121",
     "package":"{package}",
     "package_name":"{package_name}",
     "package_branch": "test",
     "rpm_url":"http://{rpm_url}"
-}]</pre>
+}]
+```
 |任务关联Build
 |-
 |dev_log
 |style="text-align:center"|string
 |style="text-align:center"|否
-|<pre>[{
+|```javascript
+[{
     "author":"xxx",
     "date": "xxxx",
     "comment": "xxxx",
@@ -73,7 +76,8 @@ Toast API 采用 JSON 作为返回值格式。其中 status 和 msg 为常量，
         "action": "M", #[M|A|D]
         "diffurl": "http://xxxx", 
     }]
-}]</pre>
+}]
+```
 |代码提交信息
 |-
 |mail_to
@@ -89,13 +93,13 @@ Toast API 采用 JSON 作为返回值格式。其中 status 和 msg 为常量，
 |任务运行参数，替换命令中的$BUILD
 |}
 *返回数据
-<pre>
+```javascript
 {
     "status":"success", // success|failure
     "msg":"Task #2 run, task run #9527 just created.",
     "runids":[9527] // TaskRun id, it is null if failed
 }
-</pre>
+```
 *FAQ
 ** 如果同时填写 id 和 build，build将会被忽略。
 ** build 可能会触发多个任务运行，故返回值 runids 是数组。
