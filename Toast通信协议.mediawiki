@@ -1,4 +1,8 @@
 __TOC__
-=Web端向Controller端发送消息方式=
-
-=Controller端向Web端发送消息方式=
+= Web端向Controller端发送消息方式 =
+Web端通过向约定目录创建协议文件、Controller端主动轮循获取的方式与Controller端通信。
+== 运行任务 ==
+== 取消任务 ==
+== 设定定时 ==
+== 设置SVN监控 ==
+= Controller端向Web端发送消息方式 =
