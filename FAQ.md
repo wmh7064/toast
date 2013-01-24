@@ -45,3 +45,85 @@ CUSTOM INFO END
 ```
 其中的用户自定义信息会展现在运行结果页面，链接将会被转换为a标签
 
+* 如何按照TOAST任务自定义测试用例格式输出?
+
+> 如果你没有使用测试框架或者使用的框架不在TOAST目前支持的范围之内，你可以按照下面的JSON样式定义你的程序输出，并选择“Toast”测试工具，这样TOAST同样可以解析你的测试用例的执行情况：<br/>
+含Test Suite时：
+```
+##TESTCASE START##
+{
+    "testsuite": [
+        {
+            "name": "SUITE1",
+            "testcase": [
+                {
+                    "id": "101",
+                    "name": "PASSED CASE",
+                    "result": "PASS",
+                    "info": "empty"
+                },
+                {
+                    "id": "102",
+                    "name": "FAILED CASE",
+                    "result": "FAIL",
+                    "info": "failed result"
+                },
+                {
+                    "id": "103",
+                    "name": "SKIPPED CASE",
+                    "result": "SKIP",
+                    "info": "skipped result"
+                },
+                {
+                    "id": "104",
+                    "name": "BLOCKED CASE",
+                    "result": "BLOCK",
+                    "info": "empty"
+                }
+            ]
+        },
+        {
+            "name": "SUITE2",
+            "testsuite": [
+                {
+                    "name": "SUITE INSIDE",
+                    "testcase": [
+ 
+                    ]
+                }
+            ]
+        }
+    ],
+    "testcase": [
+        {
+            "id": "105",
+            "name": "PASSED CASE",
+            "result": "PASS",
+            "info": "empty"
+        }
+    ]
+}
+##TESTCASE END##
+```
+不含Test Suite时：
+```
+##TESTCASE START##
+{
+    "testcase": [
+        {
+            "id": "103",
+            "name": "CASE3",
+            "result": "FAIL",
+            "info": "failed result"
+        },
+        {
+            "id": "104",
+            "name": "CASE4",
+            "result": "PASS",
+            "info": "empty"
+        }
+    ]
+}
+##TESTCASE END##
+```
+注意：开头和结尾的##TESTCASE START##和##TESTCASE END##是必须的,内容中包含中文时请使用UTF-8编码！
