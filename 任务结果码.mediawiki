@@ -1,3 +1,4 @@
+__TOC__
 = 任务结果码 =
 * 当任务状态码为200
 ** 选择了解析方式
@@ -8,7 +9,21 @@
 *** 当命令返回值不为0时，任务结果为成功
 * 当任务状态码为200
 ** 任务结果为无结果
-{|-
-|asd
-|asd
--|}
+{| width="400" class="wikitable" border="1" cellpadding="1" cellspacing="1"
+|-
+! scope="col" | 结果类型 
+! scope="col" | 枚举值 
+! scope="col" | 注释
+|- align="center"
+| RESULT_PASSED 
+| 0 
+| 成功
+|- align="center"
+| RESULT_FAILED 
+| 1 
+| 失败
+|- align="center"
+| RESULT_NULL 
+| 9 
+| 无结果
+|}
