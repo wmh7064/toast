@@ -8,8 +8,10 @@
 *** 当命令返回值不为0时，任务结果为成功
 * 当任务状态码为200
 ** 任务结果为无结果
+
+
 {| width="400" class="wikitable" border="1" cellpadding="1" cellspacing="1"
-|-
+|- align="center"
 ! scope="col" | 结果类型 
 ! scope="col" | 枚举值 
 ! scope="col" | 注释
