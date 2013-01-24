@@ -16,14 +16,12 @@ TOAST API采用token验证方式。
  http://toast.corp.taobao.com/user/get/id/10?token=7ad1781f0cd770ab9e8099f6a0abb9dc
 == API返回格式 ==
 Toast API 采用 JSON 作为返回值格式。其中 status 和 msg 为常量，“success”代表 API 运行结果成功状态，“failure”代表 API 运行结果失败状态。
-<source style="padding: 1em; border: 1px dashed #2F6FAB; background-color: #F9F9F9; margin: 10px 0px;" lang="javascript">
-{
-    "status":"success", // success|failure
-    "msg":"Create test case success, #1 just created.", // message
-    "xxx": "xxx" // other fields
-    ...
-}
-</source>
+ {
+     "status":"success", // success|failure
+     "msg":"Create test case success, #1 just created.", // message
+     "xxx": "xxx" // other fields
+     ...
+ }
 
 == API测试环境 ==
 *测试环境地址：http://v132194.sqa.cm4.tbsite.net
