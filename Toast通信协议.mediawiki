@@ -54,7 +54,7 @@ Web端通过向约定目录创建协议文件、Controller端主动轮循获取�
     "Commands":
     [{
         "TestCommand":"Update", // 添加监控SVN任务操作
-        "AppendInfo":"{"TaskID":"1","SVN":"http://xxx"}"
+        "AppendInfo":"{"TaskID":"1","SVN":"http:\/\/xxx"}"
     }]
 }
 ```
