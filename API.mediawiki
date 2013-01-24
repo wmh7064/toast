@@ -45,27 +45,14 @@ Toast API 采用 JSON 作为返回值格式。其中 status 和 msg 为常量，
 |build
 |style="text-align:center"|string
 |style="text-align:center"|是(id 或 build 其一必填)
-|[{"svn_url":"http://{svnurl}","svn_version":"81121","package":"{package}","package_name":"{package_name}","package_branch":"test","rpm_url":"http://{rpm_url}"}]
+|[{"svn_url":"http://{svnurl}", "svn_version":"81121", "package":"{package}", "package_name":"{package_name}", "package_branch":"test", "rpm_url":"http://{rpm_url}"}]
 |任务关联Build
 |-
 |dev_log
 |style="text-align:center"|string
 |style="text-align:center"|否
-|[{
-    "author":"xxx",
-    "date": "xxxx",
-    "comment": "xxxx",
-    "revisionbegin": "xxxx",
-    "revisionend": "xxxxxx",
-    "lists": 
-        [{
-            "file": "xxxx",
-            "action": "M" #[M|A|D]
-            "diffurl": "http://xxxx", // if it is null, 
-                                      // the diffurl will be
-                                      // contacted with revisions 
-        }]
-}]
+|[{"author":"xxx", "date": "xxxx", "comment": "xxxx", "revisionbegin": "xxxx", "revisionend": "xxxxxx",
+"lists": [{ "file": "xxxx", "action": "M", #[M|A|D] "diffurl": "http://xxxx", // if it is null, the diffurl will be contacted with revisions }]}]
 |代码提交信息
 |-
 |mail_to
