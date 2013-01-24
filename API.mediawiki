@@ -1,7 +1,6 @@
 __TOC__ 
 = API =
-== API调用介绍 ==
-Toast API采用HTTP调用方式，遵守REST协议，中间数据格式采用JSON。
+Toast API采用HTTP调用方式，中间数据格式采用JSON。
 == API认证方式 ==
 Toast API采用token验证方式。
 === 获取token ===
