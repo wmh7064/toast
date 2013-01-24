@@ -6,3 +6,7 @@
 > #maven 运行中间结果：
 > RUNNING DATA WAS SAVED TO: http://xxxx/xxx/surefire-report.html
 > 这样，Toast可以找到 http://xxxx/xxx 并作为这次单元测试覆盖率结果的link保留在运行结果中。
+***
+
+***
+
