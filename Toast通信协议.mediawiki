@@ -59,4 +59,81 @@ Web端通过向约定目录创建协议文件、Controller端主动轮循获取�
 }
 ```
 = Controller端向Web端发送消息方式 =
-Controller端通过调用API方式与Web端通信。以下列出的API将会逐步过渡到[https://github.com/taobao/toast/wiki/API API]
+Controller端通过调用API方式与Web端通信。以下列出的API将会被废弃，逐步过渡到[https://github.com/taobao/toast/wiki/API API]
+== 更新任务运行结果 ==
+*地址：http://{yourtoast}/run/updaterun
+*支持HTTP方法：GET&POST
+*是否需要验证：否
+*参数
+{| style="margin-left: 20px; width: 950px" class="wikitable" border="1" cellpadding="1" cellspacing="1"
+|-
+!style="text-align:left"|名称
+!类型
+!style="width:150px"|是否必需
+!style="text-align:left"|示例值
+!style="text-align:left"|描述
+|-
+|id
+|style="text-align:center"|integer
+|style="text-align:center"|是(id 或 build 其一必填)
+|9527
+|任务ID
+|-
+|build
+|style="text-align:center"|string
+|style="text-align:center"|是(id 或 build 其一必填)
+|<pre>[{
+    "svn_url": "http://{svnurl}",
+    "svn_version": "81121",
+    "package":"{package}",
+    "package_name":"{package_name}",
+    "package_branch": "test",
+    "rpm_url":"http://{rpm_url}"
+}]
+</pre>
+|任务关联Build
+|-
+|dev_log
+|style="text-align:center"|string
+|style="text-align:center"|否
+|<pre>[{
+    "author":"xxx",
+    "date": "xxxx",
+    "comment": "xxxx",
+    "revisionbegin": "xxxx",
+    "revisionend": "xxxxxx",
+    "lists": 
+    [{
+        "file": "xxxx",
+        "action": "M", #[M|A|D]
+        "diffurl": "http://xxxx", 
+    }]
+}]
+</pre>
+|代码提交信息
+|-
+|mail_to
+|style="text-align:center"|string
+|style="text-align:center"|否
+|toast-norpley@taobao.com, toast, Toast
+|邮件通知给信息，多个收件人之间以“,”分割
+|-
+|param
+|style="text-align:center"|string
+|style="text-align:center"|否
+| -c 10
+|任务运行参数，替换命令中的$BUILD
+|}
+*返回数据
+```javascript
+{
+    "status": "success", // success|failure
+    "msg": "Task #2 run, task run #9527 just created.",
+    "runids": [9527] // TaskRun id, it is null if failed
+}
+```
+*FAQ
+** 如果同时填写 id 和 build，build将会被忽略。
+** build 可能会触发多个任务运行，故返回值 runids 是数组。
+** build 触发后该build包名将替换命令中的Build参数
+** 当同时有新build包参数和param参数时，build包参数为第一参数，param参数为第二参数。
