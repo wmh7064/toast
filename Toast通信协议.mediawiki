@@ -59,3 +59,4 @@ Web端通过向约定目录创建协议文件、Controller端主动轮循获取�
 }
 ```
 = Controller端向Web端发送消息方式 =
+Controller端通过调用API方式与Web端通信。以下列出的API将会逐步过渡到[https://github.com/taobao/toast/wiki/API API]
