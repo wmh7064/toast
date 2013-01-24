@@ -127,3 +127,15 @@ CUSTOM INFO END
 ##TESTCASE END##
 ```
 注意：开头和结尾的##TESTCASE START##和##TESTCASE END##是必须的,内容中包含中文时请使用UTF-8编码！
+
+* Toast任务为什么不能结束？
+
+>toast agent 通过获取用户任务的命令的STDOUT,STDERR来获取命令输出信息，同时会根据STDOUT，STDERR的结束来判断任务，如果您的脚本中有启动后台程序(daemon)的，并且这些后台程序(daemon)没有对STDOUT, STDERR进行处理， 由于子进程默认继承父进程的打开文件句柄，就会导致这个任务的STDOUT,STDERR一直处于打开状态，进而导致toast任务结束不了！ 后台程序(daemon)一般都会关闭STDOUT，STDERR。
+如何判断这种情况：
+假如你的任务出现这个现象，请找出您启动的后台程序，并把这些后台程序给关掉，这时toast任务就应该结束。
+如何处理这种情况：
+如果无法修改后台程序，那么就在你的脚本里启动后台程序的地方添加
+```
+ >/dev/null 2>&1 &
+```
+解决这个问题，如果可以修改后台程序，那么就对程序进行修改，使其正确daemonize。
