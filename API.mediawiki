@@ -1,0 +1,382 @@
+[[ADTechPortal/ADSDT/siteqa/ToolTeam|测试工具]]&gt;&gt;[[ADTechPortal/ADSDT/siteqa/ToolTeam#.E5.B7.A5.E4.BD.9C.E6.96.87.E6.A1.A3|工作文档]]&gt;&gt; [[ADTechPortal/ADSDT/siteqa/ToolTeam#TOAST|TOAST]]&gt;&gt;API
+
+__TOC__ 
+<div style="clear:both"></div>
+== API调用介绍 ==
+TOAST API采用HTTP调用方式，遵守REST协议，中间数据格式采用JSON。
+== API认证方式 ==
+TOAST API采用token验证方式。
+=== 获取token ===
+* 登录TOAST，点击右上方当前登录用户名，进入用户设置页面。点击生成身份验证密钥（即token）。
+[[File:UserConfig.png|center|frame|用户设置]]
+
+=== token的有效期 ===
+目前token生成一次永久有效。再次生成，上一次的token失效。
+=== token的验证使用方式 ===
+调用API时，通过GET方法传递token参数。<br/>
+例如：
+<source style="padding: 1em; border: 1px dashed #2F6FAB; background-color: #F9F9F9; margin: 10px 0px;" lang="bash">
+http://toast.corp.taobao.com/user/get/id/10?token=7ad1781f0cd770ab9e8099f6a0abb9dc
+</source>
+== API返回格式 ==
+Toast API 采用 JSON 作为返回值格式。其中 status 和 msg 为常量，“success”代表 API 运行结果成功状态，“failure”代表 API 运行结果失败状态。
+<source style="padding: 1em; border: 1px dashed #2F6FAB; background-color: #F9F9F9; margin: 10px 0px;" lang="javascript">
+{
+    "status":"success", // success|failure
+    "msg":"Create test case success, #1 just created.", // message
+    "xxx": "xxx" // other fields
+    ...
+}
+</source>
+
+== API测试环境 ==
+*测试环境地址：http://v132194.sqa.cm4.tbsite.net
+*测试帐号：admin
+*帐号密码：123456
+== 任务API ==
+=== 运行任务 ===
+*地址：http://toast.corp.taobao.com/task/run
+*支持HTTP方法：GET&POST
+*是否需要验证：是
+*参数
+{| style="margin-left: 20px; width: 950px" class="wikitable" border="1" cellpadding="1" cellspacing="1"
+|-
+!style="text-align:left"|名称
+!类型
+!style="width:150px"|是否必需
+!style="text-align:left"|示例值
+!style="text-align:left"|描述
+|-
+|id
+|style="text-align:center"|integer
+|style="text-align:center"|是(id 或 build 其一必填)
+|9527
+|任务ID
+|-
+|build
+|style="text-align:center"|string
+|style="text-align:center"|是(id 或 build 其一必填)
+|<source lang="javascript">
+[{
+    "svn_url":"http://svn.simba.taobao.com/svn/
+               daogou/storage/tags/etao-dump-sprint29",
+    "svn_version":"81121",
+    "package":"etao-dump-b2c-1.0.27-486.el5.x86_64.rpm",
+    "package_name":"etao-dump-b2c",
+    "package_branch":"test",
+    "rpm_url":"http://upload.yum.corp.taobao.com
+              /taobao/5/x86_64/test/etao-dump-b2c/
+              etao-dump-b2c-1.0.27-486.el5.x86_64.rpm"
+}]
+</source>
+|任务关联Build
+|-
+|dev_log
+|style="text-align:center"|string
+|style="text-align:center"|否
+|<source lang="javascript">
+[{
+    "author":"xxx",
+    "date": "xxxx",
+    "comment": "xxxx",
+    "revisionbegin": "xxxx",
+    "revisionend": "xxxxxx",
+    "lists": 
+        [{
+            "file": "xxxx",
+            "action": "M" #[M|A|D]
+            "diffurl": "http://xxxx", // if it is null, 
+                                      // the diffurl will be
+                                      // contacted with revisions 
+        }]
+}]
+</source>
+|代码提交信息
+|-
+|mail_to
+|style="text-align:center"|string
+|style="text-align:center"|否
+|jiaoba@taobao.com, jiaoba, 焦霸
+|邮件通知给信息，多个收件人之间以“,”分割
+|-
+|param
+|style="text-align:center"|string
+|style="text-align:center"|否
+| -c 10
+|任务运行参数，替换命令中的$BUILD
+|}
+*返回数据
+<source style="padding: 1em; border: 1px dashed #2F6FAB; background-color: #F9F9F9; margin: 10px 20px;" lang="javascript">
+{
+    "status":"success", // success|failure
+    "msg":"Task #2 run, task run #9527 just created.",
+    "runids":[9527] // TaskRun id, it is null if failed
+}
+</source>
+*FAQ
+** 如果同时填写 id 和 build，build将会被忽略。
+** build 可能会触发多个任务运行，故返回值 runids 是数组。
+** build 触发后该build包名将替换命令中的Build参数
+** 当同时有新build包参数和param参数时，build包参数为第一参数，param参数为第二参数。
+
+=== 查看任务运行记录 ===
+*地址：http://toast.corp.taobao.com/task/view
+*支持HTTP方法：GET&POST
+*是否需要验证：是
+*参数
+{| style="margin-left: 20px; width: 950px" class="wikitable" border="1" cellpadding="1" cellspacing="1"
+|-
+!style="text-align:left"|名称
+!类型
+!style="width:150px"|是否必需
+!style="text-align:left"|示例值
+!style="text-align:left"|描述
+|-
+|id
+|style="text-align:center"|integer
+|style="text-align:center"|是(id 或 runid 其一必填)
+|3
+|任务ID。
+|-
+|runid
+|style="text-align:center"|integer
+|style="text-align:center"|是(id 或 runid 其一必填)
+|9527
+|任务运行记录ID
+|}
+*返回数据
+<source style="padding: 1em; border: 1px dashed #2F6FAB; background-color: #F9F9F9; margin: 10px 20px;" lang="javascript">
+{
+    "status":"success", // success|failure
+    "msg":"Get TaskRun #9527.",
+    "taskrun":
+        {
+            "id": 9527,
+            "task_id": 3,
+            "status": 200,
+            "result": 1,
+            "build": "rank-platform-1.0.182-604.el5.x86_64.rpm",
+            "dev_log": "[{\"author\":\"mulin.lyh\",\"comment\":\"test ci 23040234&&&&&&&&&&&&&&&& 仅仅测试而已\",
+                      \"date\":\"2012-02-29T10:25:45.906116Z\",
+                      \"lists\":[{
+                          \"action\":\"M\",
+                          \"file\":\"/QA/automation/trunk/toast/newengine/ciagent/agentconnection.cpp\"}],
+                          \"revisionbegin\":\"30441\",
+                          \"revisionend\":\"30444\"
+                       }]",
+            "created_by": "jiaoba",
+            "created_time": "2010-12-29 11:46:16",
+            "start_time": "2010-12-29 11:46:36",
+            "stop_time": "2011-12-29 11:46:36"
+        }
+}
+</source>
+*FAQ
+** 如果同时填写 id 和 runid， 则 id 将被忽略。如果只填写 id，则返回该任务最后一次运行记录。
+** 返回数据中，build 代表任务运行记录是被该build触发的。
+
+== 报表API ==
+== 用例API ==
+=== 创建测试用例 ===
+*地址：http://toast.corp.taobao.com/case/create
+*支持HTTP方法：GET&POST
+*是否需要验证：是
+*参数
+{| style="margin-left: 20px; width: 950px" class="wikitable" border="1" cellpadding="1" cellspacing="1"
+|-
+!style="text-align:left"|名称
+!类型
+!style="width:80px"|是否必需
+!style="text-align:left"|示例值
+!style="text-align:left"|描述
+|-
+|TestCase[name]
+|style="text-align:center"|string
+|style="text-align:center"|是
+|sem系统支持ie8-BVT
+|用例名称
+|-
+|TestCase[project_id]
+|style="text-align:center"|integer
+|style="text-align:center"|是
+|1
+|项目模块ID
+|-
+|TestCase[code_url]
+|style="text-align:center"|string
+|style="text-align:center"|是
+|http://svn.simba.taobao.com/svn/QA/assets/js/task.js
+|代码地址
+|-
+|TestCase[framework]
+|style="text-align:center"|integer
+|style="text-align:center"|是
+|3
+|测试框架常量。MMT:3， Junit_Maven:5
+|-
+|TestCase[info]
+|style="text-align:center"|string
+|style="text-align:center"|否
+|【subway服务化】-部署说明，配置项，表结构等的验证-BVT
+|用例描述信息。
+|-
+|suites
+|style="text-align:center"|string
+|style="text-align:center"|否
+|subway服务化,SEM二期
+|测试集。多个测试集以","分割，若测试集不存在则创建新的测试集。
+|}
+*返回数据
+<source style="padding: 1em; border: 1px dashed #2F6FAB; background-color: #F9F9F9; margin: 10px 20px;" lang="javascript">
+{
+    "status":"success", // success|failure
+    "msg":"Create test case success, #1 just created.",
+    "id":1 // it is null if failed
+}
+</source>
+*FAQ
+
+=== 修改测试用例 ===
+*地址：http://toast.corp.taobao.com/case/update
+*支持HTTP方法：GET&POST
+*是否需要验证：是
+*参数
+{| style="margin-left: 20px; width: 950px" class="wikitable" border="1" cellpadding="1" cellspacing="1"
+|-
+!style="text-align:left"|名称
+!类型
+!style="width:80px"|是否必需
+!style="text-align:left"|示例值
+!style="text-align:left"|描述
+|-
+|id
+|style="text-align:center"|integer
+|style="text-align:center"|是
+|9527
+|用例ID
+|-
+|TestCase[name]
+|style="text-align:center"|string
+|style="text-align:center"|是
+|sem系统支持ie8-BVT
+|用例名称
+|-
+|TestCase[project_id]
+|style="text-align:center"|integer
+|style="text-align:center"|是
+|1
+|项目模块ID
+|-
+|TestCase[code_url]
+|style="text-align:center"|string
+|style="text-align:center"|是
+|http://svn.simba.taobao.com/svn/QA/assets/js/task.js
+|代码地址
+|-
+|TestCase[framework]
+|style="text-align:center"|integer
+|style="text-align:center"|是
+|3
+|测试框架常量。MMT:3， Junit_Maven:5
+|-
+|TestCase[info]
+|style="text-align:center"|string
+|style="text-align:center"|否
+|【subway服务化】-部署说明，配置项，表结构等的验证-BVT
+|用例描述信息。
+|-
+|suites
+|style="text-align:center"|string
+|style="text-align:center"|否
+|subway服务化,SEM二期
+|测试集。多个测试集以","分割，若测试集不存在则创建新的测试集。
+|}
+*返回数据
+<source style="padding: 1em; border: 1px dashed #2F6FAB; background-color: #F9F9F9; margin: 10px 20px;" lang="javascript">
+{
+    "status":"success", // success|failure
+    "msg":"Update test case success, #9527 just updated.",
+    "id": 9527 // it is null if failed
+}
+</source>
+*FAQ
+
+=== 删除测试用例 ===
+*地址：http://toast.corp.taobao.com/case/delete
+*支持HTTP方法：GET&POST
+*是否需要验证：是
+*参数
+{| style="margin-left: 20px; width: 950px" class="wikitable" border="1" cellpadding="1" cellspacing="1"
+|-
+!style="text-align:left"|名称
+!类型
+!style="width:80px"|是否必需
+!style="text-align:left"|示例值
+!style="text-align:left"|描述
+|-
+|id
+|style="text-align:center"|integer
+|style="text-align:center"|是
+|9527
+|用例ID
+|}
+*返回数据
+<source style="padding: 1em; border: 1px dashed #2F6FAB; background-color: #F9F9F9; margin: 10px 20px;" lang="javascript">
+{
+    "status":"success", // success|failure
+    "msg":"Delete test case success, #9527 just deleted.",
+    "id": 9527 // it is null if failed
+}
+</source>
+*FAQ
+
+=== 创建测试用例结果 ===
+*地址：http://toast.corp.taobao.com/result/create
+*支持HTTP方法：GET&POST
+*是否需要验证：是
+*参数
+{| style="margin-left: 20px; width: 950px" class="wikitable" border="1" cellpadding="1" cellspacing="1"
+|-
+!style="text-align:left"|名称
+!类型
+!style="width:80px"|是否必需
+!style="text-align:left"|示例值
+!style="text-align:left"|描述
+|-
+|CaseResult[case_id]
+|style="text-align:center"|integer
+|style="text-align:center"|否
+|605
+|用例ID，与运行记录ID有其一不能为空
+|-
+|CaseResult[command_run_id]
+|style="text-align:center"|string
+|style="text-align:center"|否
+|1200
+|运行记录ID，与用例ID有其一不能为空
+|-
+|CaseResult[case_result]
+|style="text-align:center"|integer
+|style="text-align:center"|是
+|1
+|测试用例结果。pass: 0, fail: 1, skip: 2, block: 3
+|-
+|CaseResult[result_info]
+|style="text-align:center"|string
+|style="text-align:center"|否
+|com.taobao.ad.filesyncer.client.SimpleFileSyncerSessionFactoryTest
+|测试用例结果信息
+|}
+*返回数据
+<source style="padding: 1em; border: 1px dashed #2F6FAB; background-color: #F9F9F9; margin: 10px 20px;" lang="javascript">
+{
+    "status":"success", // success|failure
+    "msg":"Create test case result success, #333 just deleted.",
+    "id": 333 // it is null if failed
+}
+</source>
+*FAQ
+
+== 提测API ==
+== 机器API ==
+== KVM API ==
