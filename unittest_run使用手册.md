@@ -21,7 +21,7 @@
 ##二、unittest_run使用   
 ###1、配置文件unittest_run.conf    
 unittest_run在执行任务时需要从配置文件中读取相关数据，其中配置文件默认内容如下，用户需要对各选项的值修改为有效值。
-
+```
 [UnitTest]   
 SvnAccount = 【svn账号】   
 SvnPwd = 【svn密码】   
@@ -37,15 +37,17 @@ Genhtml = /home/a/bin/genhtml
 MvnMerge = /home/a/bin/toast/script/cobertura-1.9.4.1/cobertura-merge.sh    
 MvnReport = /home/a/bin/toast/script/cobertura-1.9.4.1/cobertura-report.sh    
 MvnPath   = /home/a/bin/toast/script/apache-maven-2.2.1/bin: 
-
+```
 ###2、怎样使用unittest_run    
-######（1）基本命令：    
-/directory/unittest_run –s “svnurl” –u “command” –y [–M/-s/--python/--php/--shell/--perl/--lua]    
+######（1）基本命令：
+```bash
+/directory/unittest_run –s “svnurl” –u “command” –y [–M/-s/--python/--php/--shell/--perl/--lua]
+```
 表示从svn上checkout代码到本地再执行command，执行完command后收集覆盖率数据，若没有-y选项则不进行覆盖率的收集。其中[]中的选项代表单元测试的类型，会影响覆盖率数据的收集，-M为maven执行的java项目，-s为scons编译执行的c/c++项目。若没有执行单元测试类型，则默认为make编译执行的c/c++项目。    
 其中-s选项可替换为-l选项，表示执行本地的项目，对应的选项值设为本地项目的directory。     
 
 ######（2）其他选项说明
-
+```bash
 Msic:     
   -h, --help                          Print this for help,then exit    
 Operation:     
@@ -70,7 +72,7 @@ Options:
   --php  				         support php project     
   --perl                                         support perl project      
   --lua                                          support lua project    
-
+```
 ###3、	各语言项目的覆盖率收集     
 #####（1）c/c++项目    
 unittest_run对c/c++的覆盖率收集是基于gcov/lcov的。      
@@ -78,7 +80,7 @@ unittest_run对c/c++的覆盖率收集是基于gcov/lcov的。
 *  建议去掉-O2以上级别的代码优化选项；    
 *  如果连接的时候出现undefined reference to ‘__gcov_init’错误，则还要加上-lgocv(makefile里面可以加在LDFLAGS上)
  详见http://sdet.org/?p=212     
-       事例：    
+       事例：
 unittest_run –s “http://xxxx/trunk/”-u “makecommand;runcase command” -y 
 
 ###（2）maven构建的java项目：
