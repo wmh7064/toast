@@ -32,3 +32,24 @@ TOAST的这种调度模式，可以支持以下两种典型的持续集成与自
 
 ***
 
+# 测试任务管理
+
+为了支持测试的分布式执行，TOAST 将测试分为三个概念: Task, Stage, Job
+
+* Task
+仅在单台机器上执行，但可以在不同的机器上执行，相当于一个测试任务库，在TOAST中可以复用，在UI上显示为”命令集”，任务执行过程中的输出(stdout,stderr)有测试Agent传给Controller，并保存下来。
+* Stage
+是一个逻辑上Task的组合，Stage分为两种，串行和并行(serial&parallel)，串行Stage中的任务按时间顺序执行，只有前一个任务结束后续任务才会执行；并行Stage中的任务会一次全部发送到Agent，同时执行, Stage 是控制分布式执行任务的关键概念。
+* Job 
+Job是Stage的组合，Job中的每个Stage顺序执行。
+通常我们的测试任务分为3个阶段，开始(setup)，执行(run)，清理(clean up)， TOAST通过任务的划分可以清晰的定义测试执行中的各阶段。
+下面是一个典型的TOAST测试Job：
+![test_job](http://testing.etao.com/sites/default/files/test_job.jpg)
+
+
+在应用上需要彻底理解TOAST测试任务划分，将测试任务合理分解，便于测试后分析问题！
+同时，测试任务的分布式执行为分布式压力测试提供了有力支持。
+
+# 设计概要
+
+
