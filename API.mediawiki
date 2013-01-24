@@ -68,13 +68,13 @@ Toast API 采用 JSON 作为返回值格式。其中 status 和 msg 为常量，
     "revisionbegin": "xxxx",
     "revisionend": "xxxxxx",
     "lists": 
-        [{
-            "file": "xxxx",
-            "action": "M" #[M|A|D]
-            "diffurl": "http://xxxx", // if it is null, 
-                                      // the diffurl will be
-                                      // contacted with revisions 
-        }]
+    [{
+        "file": "xxxx",
+        "action": "M" #[M|A|D]
+        "diffurl": "http://xxxx", // if it is null, 
+                                  // the diffurl will be
+                                  // contacted with revisions 
+    }]
 }]</pre>
 |代码提交信息
 |-
