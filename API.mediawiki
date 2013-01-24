@@ -1,11 +1,10 @@
 __TOC__ 
-<div style="clear:both"></div>
 == API调用介绍 ==
-TOAST API采用HTTP调用方式，遵守REST协议，中间数据格式采用JSON。
+Toast API采用HTTP调用方式，遵守REST协议，中间数据格式采用JSON。
 == API认证方式 ==
-TOAST API采用token验证方式。
+Toast API采用token验证方式。
 === 获取token ===
-* 登录TOAST，点击右上方当前登录用户名，进入用户设置页面。点击生成身份验证密钥（即token）。
+* 登录Toast，点击右上方当前登录用户名，进入用户设置页面。点击生成身份验证密钥（即token）。
 [[File:UserConfig.png|center|frame|用户设置]]
 
 === token的有效期 ===
@@ -13,19 +12,19 @@ TOAST API采用token验证方式。
 === token的验证使用方式 ===
 调用API时，通过GET方法传递token参数。<br/>
 例如：
- http://{yourtoast}/user/get/id/10?token=7ad1781f0cd770ab9e8099f6a0abb9dc
+ http://<yourtoast>/user/get/id/10?token=7ad1781f0cd770ab9e8099f6a0abb9dc
 == API返回格式 ==
 Toast API 采用 JSON 作为返回值格式。其中 status 和 msg 为常量，“success”代表 API 运行结果成功状态，“failure”代表 API 运行结果失败状态。
-{
+ {
     "status":"success", // success|failure
     "msg":"Create test case success, #1 just created.", // message
     "xxx": "xxx" // other fields
     ...
-}
+ }
 
 == 任务API ==
 === 运行任务 ===
-*地址：http://toast.corp.taobao.com/task/run
+*地址：http://<yourtoast>/task/run
 *支持HTTP方法：GET&POST
 *是否需要验证：是
 *参数
