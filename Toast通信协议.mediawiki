@@ -2,7 +2,60 @@ __TOC__
 = Web端向Controller端发送消息方式 =
 Web端通过向约定目录创建协议文件、Controller端主动轮循获取的方式与Controller端通信。
 == 运行任务 ==
+```javascript
+{
+    "RunID":"11", #运行任务主键
+    "Commands":
+    [{
+        "CommandID":"19", #运行命令主键
+        "TestBox":"ip", #ip地址
+        "TestCommand":"ping www.taobao.com -c10", #命令
+        "Timeout":"1440", #超时值
+        "Sudoer":"root" #执行帐号
+    }],
+    "TestType":"Regress" #[Unit|Regress]
+}
+```
 == 取消任务 ==
+```javascript
+{
+    "RunID":"11", #运行任务主键
+    "Commands":
+     [{
+         "CommandID":"19", #运行命令主键
+         "TestBox":"test", #忽略
+         "TestCommand":"test", #忽略
+         "Timeout":"1440", #忽略
+         "Sudoer":"root" #忽略
+    }],
+    "TestType":"CancelRun" #取消操作
+}
+```
 == 设定定时 ==
+```javascript
+{
+    "TestType":"TimerTask", #定时任务操作
+    "RunID":"0", #忽略
+    "Commands":
+    [{
+        "TestCommand":"Del", #删除定时任务操作
+        "AppendInfo":"{"TaskID":"1","Time":"3 0 * * *"}"
+    },{
+        "TestCommand":"Add", #添加定时任务操作
+        "AppendInfo":"{"TaskID":"1","Time":"3 0 * * *"}"
+    }]
+}
+```
 == 设置SVN监控 ==
+```javascript
+{
+    "TestType":"CI", #监控SVN任务操作
+    "RunID":"0", #忽略
+    "Commands":
+    [{
+        "TestCommand":"Update", #添加监控SVN任务操作
+        "AppendInfo":"{"TaskID":"1","SVN":"http://xxx"}"
+    }]
+}
+```
 = Controller端向Web端发送消息方式 =
