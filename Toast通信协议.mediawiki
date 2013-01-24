@@ -100,7 +100,32 @@ Controller端通过调用API方式与Web端通信。以下列出的API将会被�
 *返回数据
 ```javascript
 {
-    "status":"success" // [success|failed]
+    "status": "success" // [success|failed]
+}
+```
+== 更新所有没有完成任务运行状态 ==
+*地址：http://{yourtoast}/run/updateallrun
+*支持HTTP方法：GET&POST
+*是否需要验证：否
+*参数
+{| style="margin-left: 20px; width: 950px" class="wikitable" border="1" cellpadding="1" cellspacing="1"
+|-
+!style="text-align:left"|名称
+!类型
+!style="width:150px"|是否必需
+!style="text-align:left"|示例值
+!style="text-align:left"|描述
+|-
+|status
+|style="text-align:center"|integer
+|style="text-align:center"|是
+|200
+|运行状态
+|}
+*返回数据
+```javascript
+{
+    "status": "success" // [success|failed]
 }
 ```
 == 更新测试机 ==
@@ -161,14 +186,65 @@ Controller端通过调用API方式与Web端通信。以下列出的API将会被�
 *返回数据
 ```javascript
 {
-    "code":0, // 0 成功；1 失败
-    "msg":"success",
+    "code": 0, // 0 成功；1 失败
+    "msg": "success",
     "machine":
     {
         "ip": "10.232.134.98",
         "id": "16",
-        "name": "v132194.machin"，
+        "name": "v132194.machine",
         ...
     } // 成功时返回machine属性信息， 失败时返回null
+}
+```
+== 更新所有测试机 ==
+*地址：http://{yourtoast}/machine/updateallmachine
+*支持HTTP方法：GET&POST
+*是否需要验证：否
+*参数
+{| style="margin-left: 20px; width: 950px" class="wikitable" border="1" cellpadding="1" cellspacing="1"
+|-
+!style="text-align:left"|名称
+!类型
+!style="width:150px"|是否必需
+!style="text-align:left"|示例值
+!style="text-align:left"|描述
+|-
+|status
+|style="text-align:center"|integer
+|style="text-align:center"|是
+|0 idle; 1 running; 2 down
+|机器状态
+|}
+*返回数据
+```javascript
+{
+    "status": "success" // [success|failed]
+}
+```
+== 获取所有任务定时运行时间 ==
+*地址：http://{yourtoast}/task/getallruntime
+*支持HTTP方法：GET&POST
+*是否需要验证：否
+*参数：无
+*返回数据
+```javascript
+{
+    "1": "0 0 * * *",
+    "22": "0 1 * * *",
+    ...
+}
+```
+== 获取所有任务SVN监控URL ==
+*地址：http://{yourtoast}/task/getallruntime
+*支持HTTP方法：GET&POST
+*是否需要验证：否
+*参数：无
+*返回数据
+```javascript
+{
+    "1": "http:\/\/xxx",
+    "2": "http:\/\/xxx",
+    ...
 }
 ```
