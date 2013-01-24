@@ -83,6 +83,7 @@ XAMPP环境的mysql命令在/opt/lampp/bin路径下
 ```
 service httpd restart
 ```
-浏览器打开http://localhost，默认管理员权限的用户名密码为：
-用户名：admin
-密码：123456
+
+浏览器打开 http://localhost，默认管理员权限的用户名密码为：
+<br/>用户名：admin
+<br/>密码：123456
