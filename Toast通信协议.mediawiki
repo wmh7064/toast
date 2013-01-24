@@ -75,65 +75,31 @@ Controller端通过调用API方式与Web端通信。以下列出的API将会被�
 |-
 |id
 |style="text-align:center"|integer
-|style="text-align:center"|是(id 或 build 其一必填)
+|style="text-align:center"|是
 |9527
-|任务ID
+|运行命令ID
 |-
-|build
-|style="text-align:center"|string
-|style="text-align:center"|是(id 或 build 其一必填)
-|<pre>[{
-    "svn_url": "http://{svnurl}",
-    "svn_version": "81121",
-    "package":"{package}",
-    "package_name":"{package_name}",
-    "package_branch": "test",
-    "rpm_url":"http://{rpm_url}"
-}]
-</pre>
-|任务关联Build
+|status
+|style="text-align:center"|integer
+|style="text-align:center"|是
+|200
+|运行状态
 |-
-|dev_log
+|return_value
+|style="text-align:center"|integer
+|style="text-align:center"|否
+|0
+|命令返回值
+|-
+|desc_info
 |style="text-align:center"|string
 |style="text-align:center"|否
-|<pre>[{
-    "author":"xxx",
-    "date": "xxxx",
-    "comment": "xxxx",
-    "revisionbegin": "xxxx",
-    "revisionend": "xxxxxx",
-    "lists": 
-    [{
-        "file": "xxxx",
-        "action": "M", #[M|A|D]
-        "diffurl": "http://xxxx", 
-    }]
-}]
-</pre>
-|代码提交信息
-|-
-|mail_to
-|style="text-align:center"|string
-|style="text-align:center"|否
-|toast-norpley@taobao.com, toast, Toast
-|邮件通知给信息，多个收件人之间以“,”分割
-|-
-|param
-|style="text-align:center"|string
-|style="text-align:center"|否
-| -c 10
-|任务运行参数，替换命令中的$BUILD
+|something
+|描述信息
 |}
 *返回数据
 ```javascript
 {
-    "status": "success", // success|failure
-    "msg": "Task #2 run, task run #9527 just created.",
-    "runids": [9527] // TaskRun id, it is null if failed
+    "status":"success" // [success|failed]
 }
 ```
-*FAQ
-** 如果同时填写 id 和 build，build将会被忽略。
-** build 可能会触发多个任务运行，故返回值 runids 是数组。
-** build 触发后该build包名将替换命令中的Build参数
-** 当同时有新build包参数和param参数时，build包参数为第一参数，param参数为第二参数。
