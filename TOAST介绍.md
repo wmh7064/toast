@@ -13,6 +13,7 @@
 * TOAST目前支持常用的测试框架，Junit, Google test, Selenium，phpunit, python unit等10余种测试框架；
 
 TOAST的这种调度模式，可以支持以下两种典型的持续集成与自动化测试运行模式，
+
 1. 代码check in 触发的单元测试，如下图:
 
 
