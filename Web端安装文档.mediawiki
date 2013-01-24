@@ -1,0 +1,29 @@
+= 准备环境 =
+Toast前端基于Linux下的PHP、Apache、 MySQL环境，建议使用XAMPP集成环境，下面将针对使用XAMPP集成环境和自己搭建环境分别介绍。
+== 使用XAMPP集成环境 ==
+从站点[http://www.apachefriends.org/zh_cn/xampp-linux.html]下载并按说明安装XAMPP环境。
+XAMPP启动时默认使用用户名nobody，所以需要将lampp目录转换到nobody名下
+```bash
+chown nobody /opt/lampp -R
+```
+启动XAMPP
+```bash
+/opt/lampp/lampp start
+```
+== 通过YUM安装 ==
+安装Apache
+```bash
+yum install httpd
+```
+安装MySQL
+```bash
+yum install mysql mysql-server mysql-libs
+```
+安装PHP
+```bash
+yum install php php-cli php-common php-pdo php-mysql php-ldap php-mbstring
+```
+启动服务：
+```bash
+service httpd mysqld start
+```
