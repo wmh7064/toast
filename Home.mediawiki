@@ -1,4 +1,4 @@
-欢迎来访问，这里是TOAST的wiki首页!
+Hello，这里是TOAST文档首页!
 
 * [https://github.com/taobao/toast/wiki/TOAST-%E7%AE%80%E4%BB%8B Toast介绍]
 * 安装文档
