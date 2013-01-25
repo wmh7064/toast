@@ -49,3 +49,24 @@ TOAST由Web端、Controller端和Agent端三部分构成，通过Web端定制任
 * 3. Agent端将执行任务过程中的stdout和stderr传递给Controller端。
 * 4. 由Controller端将stdout和stderr保存在指定的位置
 * 5. Web端分析stdout和stderr，将结果反馈给用户。
+
+# 前端Web端设计
+Web端基于PHP+MySQL架构，采用Yii框架实现MVC。
+![toast_web](http://testing.etao.com/sites/default/files/toast_web.jpg)
+>Web端提供View层给用户，同时提供API给第三方应用。
+
+>任务执行的过程
+![kkk](https://lh4.googleusercontent.com/jB0es4jxGUHRWlUafYdZa06UnWB8l3RhyVShbOSm6Fb1Apwuc-Eov61tNvfUr0S_YlDgI1EguSh80dPClFrNHpapu3muYlNcWggOkfu3ZbSO_dpgmlI)
+
+通过用户手动出发或者第三方应用API触发运行自动化任务，Task Controller调用Task Model创建一个新的Task Run，Task Run将自动化任务命令告知TOAST Controller端。
+
+# 后端设计
+后端主要起到任务分发和收集任务执行结果的功能，后端接收前端发送的任务，发送到指定的Agent执行，并将任务执行结果发送给前端。后端在一定条件下触发指定的任务执行，目前仅实现定时触发功能，即在指定的时间触发任务执行。
+![bbb](https://docs.google.com/drawings/image?id=scABq1es1EoY9NA_vIlBk_2ud&w=617&h=387&rev=126&ac=1)
+## Controller端设计
+前端通过文件向Controller 发送要执行的任务，通过HTTP 接口通报任务执行的状态，同时通过HTTP接口获取系统其它信息，如定时任务列表，Agent列表。
+Controller同时管理所有Agent，Controller通过Socket与Agent通信，通过与每个Agent建立一个TCP链接，在该链接上发送命令，接收命令执行结果。
+Agent需要定时向Controller发送Heartbeat 信息，在实现上将Heartbeat 信息与机器信息结合，Agent会定时向Controller报告机器CPU、内存、磁盘、网络利用率信息，这些信息同时作为Agent的Heartbeat。
+
+## Agent端设计
+Agent功能相对简单，它接收Controller发送的命令，执行命令，并将命令的输出信息(stdout, stderr)发送给Controller和一个远程的Shell相同。
