@@ -1,6 +1,6 @@
 Hello，这里是TOAST文档首页!
 
-* [https://github.com/taobao/toast/wiki/TOAST-%E7%AE%80%E4%BB%8B Toast简介 (Gongzhi)]
+* [https://github.com/taobao/toast/wiki/TOAST-%E7%AE%80%E4%BB%8B Toast简介]
 
 * 用户使用手册
 ** 安装文档
