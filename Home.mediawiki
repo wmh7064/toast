@@ -12,7 +12,7 @@ Hello，这里是TOAST文档首页!
 ** [https://github.com/taobao/toast/wiki/TOAST-%E6%9C%BA%E5%99%A8%E7%AE%A1%E7%90%86 机器管理]
 ** [http://taobao.github.com/toast TOAST 用例管理 (Jiaoba)]
 ** 后台管理
-*** [http://taobao.github.com/toast/wiki/%E4%BA%A7%E5%93%81%E7%AE%A1%E7%90%86 产品管理]
+*** [https://github.com/taobao/toast/wiki/%E4%BA%A7%E5%93%81%E7%AE%A1%E7%90%86 产品管理]
 *** [http://taobao.github.com/toast TOAST 用户管理 (Jiaoba)]
 ** 插件使用
 *** [http://taobao.github.com/toast TOAST 持续集成插件ci_run的使用 (Gongzhi)]
