@@ -5,7 +5,7 @@
 
 基本原理，TOAST Controller 可以调度远程测试机器(TOAST Agent)上的测试程序，由于测试程序一般是基于某种代码级别的测试框架（例如gtest/junit/selenium等），这些测试框架会格式化输出测试程序的运行结果，TOAST会得到测试机器上的运行结果，然后做输出日志解析并判断运行结果，最后以邮件或者报表方式展示测试结果。
 
-## TOAST v1.0 的设计目标
+# TOAST 设计目标
 
 * 测试程序调度工具，提供自动化任务的定时运行、手动运行、按照代码check in触发模式、api触发模式等方式的运行，通过不同的触发模式可以做持续集成后的自动化测试；
 * 自动化测试运行公开、简单、高效地运行结果展示，提供多维度的报表，并以邮件的方式通知结果；
@@ -16,21 +16,10 @@ TOAST的这种调度模式，可以支持以下两种典型的持续集成与自
 
 1. 代码check in 触发的单元测试，如下图:
 
-***
-
-![](http://testing.etao.com/sites/default/files/check-in_0.png)
-
-
-***
+![check-in](http://testing.etao.com/sites/default/files/check-in_0.png)
 
 2. Build触发自动化功能回归测试，如下图：
-
-***
-
 ![](http://testing.etao.com/sites/default/files/regression_0.png)
-
-
-***
 
 # 测试任务管理
 
@@ -51,5 +40,12 @@ Job是Stage的组合，Job中的每个Stage顺序执行。
 同时，测试任务的分布式执行为分布式压力测试提供了有力支持。
 
 # 设计概要
+TOAST由Web端、Controller端和Agent端三部分构成，通过Web端定制任务，Controller端分发任务，Agent端执行任务。
+![toast_design](http://testing.etao.com/sites/default/files/toast_design.jpg)
 
-
+自动化任务会经过以下步骤执行：
+* 1. Web端接受用户的输入定制自动化任务，并与Controller端通信告知需要执行的任务。
+* 2. Controller端将任务分发给指定的Agent执行。
+* 3. Agent端将执行任务过程中的stdout和stderr传递给Controller端。
+* 4. 由Controller端将stdout和stderr保存在指定的位置
+* 5. Web端分析stdout和stderr，将结果反馈给用户。
