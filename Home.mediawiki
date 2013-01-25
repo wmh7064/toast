@@ -8,18 +8,18 @@ Hello，这里是TOAST文档首页!
 *** [https://github.com/taobao/toast/wiki/ Controller后端安装文档(Mulin)]
 *** [https://github.com/taobao/toast/wiki/ Agent端安装文档(Mulin)]
 
-** [http://taobao.github.com/toast TOAST 任务管理]
-** [http://taobao.github.com/toast TOAST 机器管理]
-** [http://taobao.github.com/toast TOAST 用例管理]
-** 后台管理
+** [http://taobao.github.com/toast TOAST 任务管理(Gongzhi)]
+** [http://taobao.github.com/toast TOAST 机器管理(Zhongyou)]
+** [http://taobao.github.com/toast TOAST 用例管理(Zhongyou)]
+** 后台管理(Gongzhi)
 *** [http://taobao.github.com/toast TOAST 产品管理]
 *** [http://taobao.github.com/toast TOAST 用户管理]
 *** [http://taobao.github.com/toast TOAST 用户组管理]
 ** 插件使用
-*** [http://taobao.github.com/toast TOAST 持续集成插件ci_run的使用]
-*** [https://github.com/taobao/toast/wiki/unittest_run%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C 单元测试插件unittest_run的使用]
+*** [http://taobao.github.com/toast TOAST 持续集成插件ci_run的使用(Gongzhi)]
+*** [https://github.com/taobao/toast/wiki/unittest_run%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C 单元测试插件unittest_run的使用(Yuelin)]
 ** [https://github.com/taobao/toast/wiki/API API]
-* 设计文档
+* 设计文档(Jiaoba)
 ** [https://github.com/taobao/toast/wiki/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE 通信协议]
 ** [https://github.com/taobao/toast/wiki/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81%E7%A0%81 任务状态码]
 ** [https://github.com/taobao/toast/wiki/%E4%BB%BB%E5%8A%A1%E7%BB%93%E6%9E%9C%E7%A0%81 任务结果码]
