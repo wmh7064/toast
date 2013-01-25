@@ -3,8 +3,8 @@
 * [https://github.com/taobao/toast/wiki/TOAST-%E7%AE%80%E4%BB%8B Toast介绍]
 * 安装文档
 ** [https://github.com/taobao/toast/wiki/Web%E7%AB%AF%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3 Web端安装文档]
-* 使用文档
-** [https://github.com/taobao/toast/wiki/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3 Toast使用文档]
+* 用户使用手册
+** [Toast使用文档]
 ** [https://github.com/taobao/toast/wiki/unittest_run%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C unittest_run使用文档]
 * 协议文档
 ** [https://github.com/taobao/toast/wiki/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE 通信协议]
