@@ -25,4 +25,4 @@ Hello，这里是TOAST文档首页!
 ** [https://github.com/taobao/toast/wiki/%E4%BB%BB%E5%8A%A1%E7%BB%93%E6%9E%9C%E7%A0%81 任务结果码]
 * [https://github.com/taobao/toast/wiki/FAQ 常见问题FAQ]
 * 示例
-** [http://taobao.github.com/toast ec2-toast (gongzhi)]
+** [http://taobao.github.com/toast/wtf ec2-toast (gongzhi)]
