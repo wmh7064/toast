@@ -7,5 +7,6 @@
 
 这些脚本都基于RHEL，可能不适合你的平台，需要根据你的需要做相应修改！
 
-建议您把toast agent需要的文件打包(AgentDaemon.conf 中server和port要配置好），这样方便在每台机器部署
+建议您把toast agent需要的文件打包(AgentDaemon.conf 中server和port要配置好），方便部署
 
+编译参考backend/README.txt
