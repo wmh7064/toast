@@ -80,10 +80,13 @@ unittest_run对c/c++的覆盖率收集是基于gcov/lcov的。
 *  建议去掉-O2以上级别的代码优化选项；    
 *  如果连接的时候出现undefined reference to ‘__gcov_init’错误，则还要加上-lgocv(makefile里面可以加在LDFLAGS上)
  详见http://sdet.org/?p=212     
-       事例：
+*  事例：
+```bash
 unittest_run –s “http://xxxx/trunk/”-u “makecommand;runcase command” -y 
+```
+ 
+### （2）maven构建的java项目：
 
-###（2）maven构建的java项目：
 *  unittest_run是基于cobertura-maven-plugin插件来获取maven项目的覆盖率的。
 *  在pom.xml中进行相应的配置，然后通过maven clean cobertura:cobertura命令执行用例并产生覆盖率数据：
 ```xml
