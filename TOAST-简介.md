@@ -1,4 +1,3 @@
-
 # 基本概念
 **TOAST(Toast Open Automation System for Test)** 是由阿里巴巴集团广告技术测试团队开发的自动化测试程序运行工具。
 
@@ -15,7 +14,7 @@ TOAST的这种调度模式，可以支持以下两种典型的持续集成与自
 
 1. 代码check in 触发的单元测试，如下图:
 
-![check-in](http://testing.etao.com/sites/default/files/check-in_0.png)
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-introduce/check-in-unittest.png" width="610" height="395"/>
 
 2. Build触发自动化功能回归测试，如下图：
 ![](http://testing.etao.com/sites/default/files/regression_0.png)
