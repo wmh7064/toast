@@ -1,21 +1,19 @@
 ## 一、	Unittest_run功能   
 ### 1、功能：   
-###### unittest_run是python实现的根据相关命令执行单元测试，并根据需求收集相应代码覆盖率的工具。其执行单元测试以及收集覆盖率的过程为：   
-###### （1）	svn co项目代码；   
-###### （2）	执行用户指定的命令（一般是编译项目、执行用例等命令，由-u选项指定）   
-###### （3）	收集代码覆盖率信息（在有选项-y的情况下才会进行收集）   
-###### （4）	覆盖率数据保存，包括保存至本地和服务器   
-###### （5）	数据清理   
-###### 目前unittest_run能够对以下几种类型的语言进行覆盖率的收集：  
-###### C/C++,通过maven执行的java项目，PHP，Python，Perl，Shell，Lua
-###2、代码结构：    
-    
-图1.Unittest_run代码结构   
-######（1）	common目录包括command.py和svn.py两个公共脚本供其他脚本调用。    
-######•	command.py主要功能：通过DoCmd和DoCmd1执行命令以及通过WriteFile和ReadFile记录和读取任务执行log；   
-######•	svn.py用于执行svn相关命令：svn co/update/log等   
-######（2）	test目录是处理各种语言单元测试的脚本：    
-######Test.py是基类，包含环境准备、svn co、安装依赖包、执行用例、清理数据等功能。ctest.py,jtest.py,phptest.py等均继承至Test。   
+######unittest_run是python实现的根据相关命令执行单元测试，并根据需求收集相应代码覆盖率的工具。其执行单元测试以及收集覆盖率的过程为：   
+ （1）	svn co项目代码；   
+ （2）	执行用户指定的命令（一般是编译项目、执行用例等命令，由-u选项指定）   
+ （3）	收集代码覆盖率信息（在有选项-y的情况下才会进行收集）   
+ （4）	覆盖率数据保存，包括保存至本地和服务器   
+ （5）	数据清理   
+######目前unittest_run能够对以下几种类型的语言进行覆盖率的收集：  
+  C/C++,通过maven执行的java项目，PHP，Python，Perl，Shell，Lua
+###2、代码结构：      
+######（1）common目录包括command.py和svn.py两个公共脚本供其他脚本调用。    
+      •command.py主要功能：通过DoCmd和DoCmd1执行命令以及通过WriteFile和ReadFile记录和读取任务执行log；   
+      •svn.py用于执行svn相关命令：svn co/update/log等   
+######（2）test目录是处理各种语言单元测试的脚本：    
+    Test.py是基类，包含环境准备、svn co、安装依赖包、执行用例、清理数据等功能。ctest.py,jtest.py,phptest.py等均继承至Test。   
 ######（3）unittest_run为各种类型任务的执行入口。  
       
 ##二、unittest_run使用   
@@ -103,14 +101,15 @@ unittest_run –s “http://xxxx/trunk/”-u “makecommand;runcase command” -
 </project>
 ```
 
-* 执行命令：maven clean cobertura:cobertura unittest_run在执行完命令后会调用cobertua-merge.bat插件合并maven cobertura:cobertura产生的.ser覆盖率数据文件并生成html形式的覆盖率报告。       
+* 执行命令：执行mvn cobertura:cobertura命令即可得出测试覆盖率报表，其中主要包括Line coverage，branch coverage。cobertua是以子项目为单位的，执行完命令后在各个子项目的target/cobertura里面会生成cobertura.ser文件，但是主pom对应的target/cobertura目录下并没有cobertura.ser得出的报表。由于cobertura在maven插件中并未提供merge的功能，所有只依靠cobertura-maven-plugin无法得出整个项目的测试覆盖率。所以unittest_run会对各子项目下的cobertura.ser进行合并
+* unittest_run在对覆盖率数据.ser进行合并及生成html报告的时候，需要调用两个cobertura的插件：cobertura-merge.sh和cobertura-report.sh，用户在使用unittest_run之前需要下载corbertura，并在unittest_run中指定cobertura-merge.sh及cobertura-report.sh路径。    
 * 示例（-M指定该任务是maven项目）     
 unittest_run -s “http://xxxx/trunk/”-u “maven clean cobertura:cobertura” -y -M    
 
 ###（3）python项目：    
 * 单元测试框架，建议使用PyUnit，也是Python2.4以上版本默认内置的单元测试框架；     
 * 关于代码覆盖率，最流行的是 coverage.py，unittest_run目前仅仅支持这一种代码覆盖率的收集与展示；coverage安装：     http://nedbatchelder.com/code/coverage/install.html#install     
-*示例：     
+* 示例：     
 unittest_run -s “http://xxxx/trunk/” -u “coverage run testcase.py” -y --python    
 
 ###（4）php项目：    
@@ -121,17 +120,26 @@ unittest_run -s “http://xxxx/trunk/” -u “phpunit --coverage-html ./report 
 
 ###（5）perl项目：       
 建议使用Test::Class 做单元测试。       
-* 安装Test::Class和Devel::Cover这个非标准模块，可以使用下面命令安装：     
+* 安装Test::Class和Devel::Cover这个非标准模块，可以使用下面命令安装：
+```     
 sudo perl -MCPAN -e'install Test::Class';     
-sudo  perl -MCPAN -e 'install Devel::Cover';     
-若Devel::Cover如果安装不成功，则下载源码：     
- http://search.cpan.org/~pjcj/Devel-Cover-0.92/lib/Devel/Cover.pm#___top    
-源码安装：    
+sudo  perl -MCPAN -e 'install Devel::Cover';   
+```
+  
+* 若Devel::Cover如果安装不成功，则下载源码安装：     
+  http://search.cpan.org/~pjcj/Devel-Cover-0.92/lib/Devel/Cover.pm#___top    
+  源码安装：
+
+```
 perl MakeFile.PL     
-make install      
+make install  
+``` 
+  
 关于Can't locate CGI.pm in @INC的解决办法：    
-perl -e shell -MCPAN     
->install CGI    
+   perl -e shell -MCPAN     
+   install CGI 
+
+
 
 * 运行：    
 使用cover –delete;perl -MDevel::Cover yourprog args.pl; cover html; 运行并产品html格式覆盖率结果；    
