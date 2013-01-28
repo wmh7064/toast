@@ -12,4 +12,3 @@
 
 建议您把toast agent需要的文件打包(AgentDaemon.conf 中server和port要配置好），方便部署
 
-编译参考backend/README.txt
