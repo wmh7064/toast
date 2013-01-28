@@ -1,7 +1,10 @@
-1. 编译代码
+## 1. 编译代码
+
    参考 https://github.com/taobao/toast/tree/master/backend
-2. Agent仅需要编译出来的toast可执行文件和配置文件AgentDaemon.conf, 可将编译出来的可执行文件和配置文件拷贝到你的运行目录，执行，建议将配置文件和可执行文件打包，然后安装，打包前注意配置文件修改，运行请用sudo权限
-3. agent执行起来通过AgentDaemon.log 检查运行情况
+## 2. 安装
+   Agent仅需要编译出来的toast可执行文件和配置文件AgentDaemon.conf, 可将编译出来的可执行文件和配置文件拷贝到你的运行目录，执行，建议将配置文件和可执行文件打包，然后安装，打包前注意配置文件修改，运行请用sudo权限
+## 3. 检查运行情况
+   agent执行起来通过AgentDaemon.log 检查运行情况
 
 我们也提供了几个脚本:
    * toastdaemon将Agent添加到linux主机的服务中,这样在开机时就toast agent自动启动！
