@@ -13,11 +13,13 @@
 TOAST的这种调度模式，可以支持以下两种典型的持续集成与自动化测试运行模式。
 
 1. 代码check in 触发的单元测试，如下图:
-
+<p>
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-introduce/check-in-unittest.png" width="610" height="395"/>
-
+</p>
 2. Build触发自动化功能回归测试，如下图：
-![](http://testing.etao.com/sites/default/files/regression_0.png)
+<p>
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-introduce/ci-abs.png" width="610" height="395"/>
+</p>
 
 # 测试任务管理
 
@@ -31,7 +33,9 @@ TOAST的这种调度模式，可以支持以下两种典型的持续集成与自
 Job是Stage的组合，Job中的每个Stage顺序执行。
 通常我们的测试任务分为3个阶段，开始(setup)，执行(run)，清理(clean up)， TOAST通过任务的划分可以清晰的定义测试执行中的各阶段。
 下面是一个典型的TOAST测试Job：
-![test_job](http://testing.etao.com/sites/default/files/test_job.jpg)
+<p>
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-introduce/test-job-with-stages.jpg" width="610" height="395"/>
+</p>
 
 
 在应用上需要彻底理解TOAST测试任务划分，将测试任务合理分解，便于测试后分析问题！
@@ -39,7 +43,9 @@ Job是Stage的组合，Job中的每个Stage顺序执行。
 
 # 设计概要
 TOAST由Web端、Controller端和Agent端三部分构成，通过Web端定制任务，Controller端分发任务，Agent端执行任务。
-![toast_design](http://testing.etao.com/sites/default/files/toast_design.jpg)
+<p>
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-introduce/general-design.jpg" width="610" height="395"/>
+</p>
 
 自动化任务会经过以下步骤执行：
 * 1. Web端接受用户的输入定制自动化任务，并与Controller端通信告知需要执行的任务。
@@ -50,17 +56,24 @@ TOAST由Web端、Controller端和Agent端三部分构成，通过Web端定制任
 
 # 前端Web端设计
 Web端基于PHP+MySQL架构，采用Yii框架实现MVC。
-![toast_web](http://testing.etao.com/sites/default/files/toast_web.jpg)
+<p>
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-introduce/web-design.jpg" width="610" height="395"/>
+</p>
 >Web端提供View层给用户，同时提供API给第三方应用。
 
 >任务执行的过程
-![kkk](https://lh4.googleusercontent.com/jB0es4jxGUHRWlUafYdZa06UnWB8l3RhyVShbOSm6Fb1Apwuc-Eov61tNvfUr0S_YlDgI1EguSh80dPClFrNHpapu3muYlNcWggOkfu3ZbSO_dpgmlI)
+<p>
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-introduce/web-run-process.png" width="610" height="395"/>
+</p>
 
 通过用户手动出发或者第三方应用API触发运行自动化任务，Task Controller调用Task Model创建一个新的Task Run，Task Run将自动化任务命令告知TOAST Controller端。
 
 # 后端设计
 后端主要起到任务分发和收集任务执行结果的功能，后端接收前端发送的任务，发送到指定的Agent执行，并将任务执行结果发送给前端。后端在一定条件下触发指定的任务执行，目前仅实现定时触发功能，即在指定的时间触发任务执行。
-![bbb](https://docs.google.com/drawings/image?id=scABq1es1EoY9NA_vIlBk_2ud&w=617&h=387&rev=126&ac=1)
+<p>
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-introduce/backend-design.png" width="610" height="395"/>
+</p>
+
 ## Controller端设计
 前端通过文件向Controller 发送要执行的任务，通过HTTP 接口通报任务执行的状态，同时通过HTTP接口获取系统其它信息，如定时任务列表，Agent列表。
 Controller同时管理所有Agent，Controller通过Socket与Agent通信，通过与每个Agent建立一个TCP链接，在该链接上发送命令，接收命令执行结果。
