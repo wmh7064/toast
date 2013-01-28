@@ -2,7 +2,9 @@
 ## 1 在相应测试机上安装Toast agent，并启动
 Toast agent在启动后会根据配置文件中的server信息去连接controller，当有新的agent连接上controller后，controller会通知前端添加机器，此时Toast不知道这台机器具体是哪个人的，应该有谁负责，所以新加的机器会在一个默认的“未领取”中！
 “未领取”中的机器不能用于任务的运行（在新建任务选择测试机里找不到“未领取”中的机器）
+[未领取页面](https://raw.github.com/wiki/taobao/toast/unowneredmachine.png)
 
 ## 2 领用测试机
  在“未领取”池中，找到你新添加的测试机，点击测试机链接，修改测试机，将负责人填上！
-经过这两步，您的测试机添加完成，可以在测试任务中使用了。！
+经过这两步，您的测试机添加完成，在可用列表里应该可以找到你的机器了！
+![https://raw.github.com/wiki/taobao/toast/ownedmachine.png](可用机器列表)
