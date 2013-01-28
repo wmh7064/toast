@@ -1,5 +1,4 @@
 
-
 # 基本概念
 **TOAST(Toast Open Automation System for Test)** 是由阿里巴巴集团广告技术测试团队开发的自动化测试程序运行工具。
 
@@ -71,5 +70,5 @@ Agent需要定时向Controller发送Heartbeat 信息，在实现上将Heartbeat 
 ## Agent端设计
 Agent功能相对简单，它接收Controller发送的命令，执行命令，并将命令的输出信息(stdout, stderr)发送给Controller和一个远程的Shell相同。
 
-来源于http://testing.etao.com/handbook/toast，本文档尚待更新。
+来源于http://testing.etao.com/handbook/toast，部分细节待更新。
 2013.1.25
