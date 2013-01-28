@@ -8,7 +8,7 @@ Hello，这里是TOAST文档首页!
 *** [https://github.com/taobao/toast/wiki/Controller%E5%90%8E%E7%AB%AF%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3 Controller后端安装文档]
 *** [https://github.com/taobao/toast/wiki/Agent%E7%AB%AF%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3 Agent端安装文档 ]
 
-** [http://taobao.github.com/toast TOAST 任务管理 (Gongzhi)]
+** [https://github.com/taobao/toast/wiki/TOAST-%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86 TOAST 任务管理 (Gongzhi)]
 ** [https://github.com/taobao/toast/wiki/TOAST-%E6%9C%BA%E5%99%A8%E7%AE%A1%E7%90%86 机器管理]
 ** [http://taobao.github.com/toast TOAST 用例管理 (Jiaoba)]
 ** 后台管理
