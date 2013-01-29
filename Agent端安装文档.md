@@ -1,6 +1,7 @@
 ## 1. 编译代码
 
-   参考 https://github.com/taobao/toast/tree/master/backend
+   参考 https://github.com/taobao/toast/blob/master/backend/README.markdown
+
 ## 2. 安装
    Agent仅需要编译出来的toast可执行文件和配置文件AgentDaemon.conf, 可将编译出来的可执行文件和配置文件拷贝到你的运行目录，执行，建议将配置文件和可执行文件打包，然后安装，打包前注意配置文件修改，运行请用sudo权限
 ## 3. 检查运行情况
@@ -14,4 +15,3 @@
    这些脚本都基于RHEL，可能不适合你的平台，需要根据你的需要做相应修改！
 
 建议您把toast agent需要的文件打包(AgentDaemon.conf 中server和port要配置好），方便部署
-
