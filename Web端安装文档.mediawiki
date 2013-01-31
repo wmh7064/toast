@@ -51,8 +51,50 @@ mysql -uroot -p < <DocumentRoot>/toast/protected/data/toast.sql
 ```
 XAMPP环境的mysql命令在/opt/lampp/bin路径下
 
-修改前端配置文件<DocumentRoot>/toast/protected/config/config.php
-修改components->db下的username 和 password字段为当前数据库的可用用户名密码
+== 修改配置文件 ==
+前端配置文件
+```
+<DocumentRoot>/toast/protected/config/config.php
+```
+需要分别修改以下部分：
+*数据库配置
+```
+<?php
+// components
+'components' => array(
+    ...
+    // define database configurations
+    'db' => array(
+        'connectionString' => 'mysql:host=localhost;dbname=toast',
+        'emulatePrepare' => true,
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8',
+        'tablePrefix' => '',
+    ),
+    ...
+)
+?>
+```
+*其他相关配置
+```
+<?php
+// parameters
+'params' => array(
+    'runFilePath' => '/tmp/toast',   //前后端接口目录，对应后端配置文件中的monitor_path
+    'parserPath' => dirname(__FILE__) . '/../parsers/',
+    'stageLockFile' => dirname(__FILE__) . '/../runtime/stage.lock.',
+    'runOutputPath' => '/home/toast/output/',    //运行输出日志保存路径，对应后端配置文件中的log_path
+    'uploadPath' => dirname(__FILE__) . '/../../upload/attachments/',
+    'ciConfigSample' => dirname(__FILE__) . '/../data/ci_run.conf.sample',
+    'winAgentLink' => '/upload/public/toastagent.msi',    //Windows Agent二进制文件存放路径
+    'rraPath' => '/tmp/rra',    //测试机监控元数据文件保存路径，对应后端配置文件中的rrd_path
+    'pageSize' => 5,
+    'dateFormat' => 'Y-m-d H:i:s',
+    ...
+)
+?>
+```
 
 == 为Apache添加VirtualHost ==
 === XAMPP环境 ===
