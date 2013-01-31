@@ -8,6 +8,7 @@
 登录TOAST界面之后，可以切换到“任务”标签下。通过“全部任务”、“由我创建”、“由我负责”可以切换到不同的任务视图下查看已有的任务。
 <br>
 如下图所示，
+<br>
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/create-new.png" height="50%"/>
 <br>
 点击“新建”任务可以创建新的任务。在新建任务界面，需要输入关于任务的一些常规信息，例如：任务类型、名称、负责人、所属项目等，有几个字段需要着重说明一下，
@@ -16,11 +17,13 @@
 * SVN触发，设置svn 链接，在指定的svn url有代码变更的时候，会触发这个任务的运行。（这个依赖后端对svn服务器做配置，参见后端安装文档 <a href="https://github.com/taobao/toast/wiki/Controller%E5%90%8E%E7%AB%AF%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3" target="_blank">Controll后端安装文档</a> )
 <br>
 如下图所示，
+<br>
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/new-job.png" height="50%"/>
 
 ### 添加子任务
 在上图上点击“添加子任务”，可以进入增加子任务的向导中，这TOAST中，我们把子任务也叫为命令（command），一个或者多个命令可以构成一个阶段（Stage）。在命令模式之下，命令视图可以和单元测试视图、持续集成视图之间做切换。
 * 命令模式：命令视图
+<br>
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/add-command-basic-view.png" height="50%"/>
 * 命令模式：单元测试视图
 * 命令模式：持续集成视图
