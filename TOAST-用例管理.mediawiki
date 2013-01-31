@@ -1,5 +1,11 @@
 __TOC__
-= 介绍 =
-= 添加用例 =
-= 通过任务运行用例 =
+= 用例介绍 =
+TOAST可以添加自动化用例，将代码地址和函数名通过TOAST任务传递case_run运行获取结果，实现TOAST任务用例粒度级别的执行。
+= 使用手册 =
+== 添加用例 ==
+* 点击''新建''<br/><img src="https://raw.github.com/wiki/taobao/toast/images/toast-case/add-case-1.png" />
+* 填写''用例信息''<br/><img src="https://raw.github.com/wiki/taobao/toast/images/toast-case/add-case-2.png" />
+''目前仅支持JUnit-mvn用例，需要在代码位置填写pom.xml一级目录，函数名填写类名''
+== 通过任务运行用例 ==
 == 安装case_run ==
+= 扩展 =
