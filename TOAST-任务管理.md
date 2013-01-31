@@ -5,6 +5,8 @@
 * 测试命令(Command)，测试命令是一个可执行单元，在TOAST中它包括测试机器信息及需要运行可执行命令（shell/batch）。可执行命令可以是任何Linux/Windows上的可执行程序。TOAST以插件的形式提供了在Linux上运行的2个python脚本，unittest_run 和 ci_run，增加一下参数就可以运行单元测试和持续集成的测试任务。这个插件，是可扩展的。
 
 ## 创建任务
+登录TOAST界面之后，可以切换到“任务”标签下，点击“新建”任务可以创建新的任务。通过“全部任务”、“由我创建”、“由我负责”可以切换到不同的任务视图下查看已有的任务。如下图所示，
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/create-new.png"/>
 ### 创建普通任务
 ### 创建单元测试任务
 ### 创建持续集成任务
