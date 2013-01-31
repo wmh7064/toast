@@ -19,8 +19,9 @@
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/new-job.png"/>
 
 ### 添加子任务
-在上图上点击“添加子任务”，可以进入增加子任务的向导中，这TOAST中，我们把子任务也叫为命令（command），一个或者多个命令可以构成一个阶段（Stage）。
+在上图上点击“添加子任务”，可以进入增加子任务的向导中，这TOAST中，我们把子任务也叫为命令（command），一个或者多个命令可以构成一个阶段（Stage）。在命令模式之下，命令视图可以和单元测试视图、持续集成视图之间做切换。
 * 命令模式：命令视图
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/add-command-basic-view.png"/>
 * 命令模式：单元测试视图
 * 命令模式：持续集成视图
 * 用例模式
