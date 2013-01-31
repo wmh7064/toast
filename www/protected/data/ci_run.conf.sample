@@ -49,6 +49,6 @@ fun_test_pwd    = PASSWORD
 #功能测试代码路径
 fun_test_svn    = FUN_TEST_SVN
 #功能测试运行路径
-fun_test_path   = /tmp/toast/
+fun_test_path   = /tmp/TEST/
 #功能测试运行命令
 fun_test_cmd    = FUN_TEST_CMD
