@@ -1,3 +1,0 @@
-这里是TOAST的使用文档。
-
-* http://testing.etao.com/handbook/toast
