@@ -38,10 +38,15 @@
 用例模式，是指在定义一个任务需要指定这个任务由哪些用例组成，这里的前提条件是必须使用TOAST用例管理的功能，即把你的测试用例注册到用例系统中，才可以创建任务的时候选择已有的用例。<a href="https://github.com/taobao/toast/wiki/TOAST-%E7%94%A8%E4%BE%8B%E7%AE%A1%E7%90%86" target="_blank">参见用例管理使用手册</a>
 <br>
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/add-command-testcase-view.png" width="50%"/>
+<br>
 ## 运行任务
 * 手动运行
+在任务创建完毕以后，点击任务进入任务界面，然后选择左上角的“运行”，可以手动触发这个测试任务的运行。
 * SVN触发运行
+在任务的“SVN触发”字段中，如果有配置svn地址，当svn地址有变更是，会自动触发这个任务的运行。
 * 定时任务触发
+在任务的“定时运行”字段中，如果配置有定时运行时间，在指定的时间来临时，会自动触发这个任务的运行。
 * API 触发
+可以通过http api触发任务运行，<a href="https://github.com/taobao/toast/wiki/API">参见API文档</a>
 
 ## 查看运行结果
