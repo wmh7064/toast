@@ -7,5 +7,9 @@ TOAST可以添加自动化用例，将代码地址和函数名通过TOAST任务�
 * 填写''用例信息''<br/><img src="https://raw.github.com/wiki/taobao/toast/images/toast-case/add-case-2.png" />''目前仅支持JUnit-mvn用例，需要在代码位置填写pom.xml一级目录，函数名填写类名''
 == 通过任务运行用例 ==
 在[https://github.com/taobao/toast/wiki/TOAST-%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86 创建子任务]时，选择''用例模式''
-<img src="https://raw.github.com/wiki/taobao/toast/images/toast-case/add-case-to-task.png" height="70%"/>
-运行环境''xxx.xxx.xxx.xxx''需要装有[https://github.com/taobao/toast/wiki/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%BF%90%E8%A1%8C%E6%8F%92%E4%BB%B6case_run%E7%9A%84%E4%BD%BF%E7%94%A8 run_case]
+<br/>
+<img height="70%" src="https://raw.github.com/wiki/taobao/toast/images/toast-case/add-case-to-task.png" />
+<br/>
+运行环境''xxx.xxx.xxx.xxx''需要装有[https://github.com/taobao/toast/wiki/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%BF%90%E8%A1%8C%E6%8F%92%E4%BB%B6case_run%E7%9A%84%E4%BD%BF%E7%94%A8 run_case]<br/>
+用例运行结果
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-case/task-case-result.png" />
