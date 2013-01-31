@@ -11,5 +11,5 @@ TOAST可以添加自动化用例，将代码地址和函数名通过TOAST任务�
 <img height="70%" src="https://raw.github.com/wiki/taobao/toast/images/toast-case/add-case-to-task.png" />
 <br/>
 运行环境''xxx.xxx.xxx.xxx''需要装有[https://github.com/taobao/toast/wiki/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%BF%90%E8%A1%8C%E6%8F%92%E4%BB%B6case_run%E7%9A%84%E4%BD%BF%E7%94%A8 run_case]<br/>
-用例运行结果
+用例运行结果<br/>
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-case/task-case-result.png" />
