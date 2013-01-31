@@ -81,10 +81,10 @@ XAMPP环境的mysql命令在/opt/lampp/bin路径下
 <?php
 // parameters
 'params' => array(
-    'runFilePath' => '/tmp/toast',   //前后端接口目录，对应后端配置文件中的monitor_path
+    'runFilePath' => '/tmp/toast',   //前后端接口目录，对应后端配置文件中的monitor_path，如果不存在需要创建
     'parserPath' => dirname(__FILE__) . '/../parsers/',
     'stageLockFile' => dirname(__FILE__) . '/../runtime/stage.lock.',
-    'runOutputPath' => '/home/toast/output/',    //运行输出日志保存路径，对应后端配置文件中的log_path
+    'runOutputPath' => '/tmp/toast_output/',    //运行输出日志保存路径，对应后端配置文件中的log_path,如果不存在需要创建
     'uploadPath' => dirname(__FILE__) . '/../../upload/attachments/',
     'ciConfigSample' => dirname(__FILE__) . '/../data/ci_run.conf.sample',
     'winAgentLink' => '/upload/public/toastagent.msi',    //Windows Agent二进制文件存放路径
