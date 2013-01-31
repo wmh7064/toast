@@ -23,9 +23,13 @@
 ### 添加子任务
 在上图上点击“添加子任务”，可以进入增加子任务的向导中，这TOAST中，我们把子任务也叫为命令（command），一个或者多个命令可以构成一个阶段（Stage）。在命令模式之下，命令视图可以和单元测试视图、持续集成视图之间做切换。
 * 命令模式：命令视图
+命令视图是在任务类型中选择“功能测试”之后的默认视图。
 <br>
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/add-command-basic-view.png" height="50%"/>
 * 命令模式：单元测试视图
+单元测试视图是在任务类型中选择“单元测试”之后的默认视图。注意，单元测试视图需要在Agent端安装的“单元测试”插件(<a href="https://github.com/taobao/toast/wiki/unittest_run%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C" target="_blank">参见插件unittest_run使用手册</a>)才能使用。可以把单元测试视图切换到命令视图，从而可以查看真正在测试机器上运行的测试命令（实际上使用了单元测试插件中的unittest_run脚本）。
+<br>
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/add-command-unittest-view.png" height="50%"/>
 * 命令模式：持续集成视图
 * 用例模式
 
