@@ -1,6 +1,6 @@
 Hello，这里是TOAST文档首页!
 
-* [https://github.com/taobao/toast/wiki/TOAST-%E7%AE%80%E4%BB%8B Toast简介]
+* [https://github.com/taobao/toast/wiki/TOAST-%E7%AE%80%E4%BB%8B TOAST简介]
 
 * 用户使用手册
 ** 安装文档
@@ -10,7 +10,7 @@ Hello，这里是TOAST文档首页!
 
 ** [https://github.com/taobao/toast/wiki/TOAST-%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86 TOAST 任务管理 (Gongzhi)]
 ** [https://github.com/taobao/toast/wiki/TOAST-%E6%9C%BA%E5%99%A8%E7%AE%A1%E7%90%86 机器管理]
-** [http://taobao.github.com/toast TOAST 用例管理 (Jiaoba)]
+** [https://github.com/taobao/toast/wiki/TOAST-%E7%94%A8%E4%BE%8B%E7%AE%A1%E7%90%86 TOAST 用例管理]
 ** 后台管理
 *** [https://github.com/taobao/toast/wiki/%E4%BA%A7%E5%93%81%E7%AE%A1%E7%90%86 产品管理]
 *** [http://taobao.github.com/toast TOAST 用户管理 (Jiaoba)]
