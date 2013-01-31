@@ -39,6 +39,7 @@
 <br>
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/add-command-testcase-view.png" width="50%"/>
 <br>
+
 ## 运行任务
 * 手动运行
 在任务创建完毕以后，点击任务进入任务界面，然后选择左上角的“运行”，可以手动触发这个测试任务的运行。
@@ -50,3 +51,10 @@
 可以通过http api触发任务运行，<a href="https://github.com/taobao/toast/wiki/API">参见API文档</a>
 
 ## 查看运行结果
+参见下图，
+<br>
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/job-result.png" width="50%"/>
+<br>
+
+## 任务修改与删除
+tobe
