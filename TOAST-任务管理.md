@@ -18,13 +18,16 @@
 如下图所示，
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/new-job.png"/>
 
-* 创建普通任务
+### 添加子任务
+test
 * 创建单元测试任务
 * 创建持续集成任务
 * 创建包含测试用例信息的任务
+
 ## 运行任务
 * 手动运行
 * SVN触发运行
 * 定时任务触发
 * API 触发
+
 ## 查看运行结果
