@@ -1,0 +1,52 @@
+html {
+    margin: 0;
+    padding: 5px;
+}
+body {
+    margin: 5px;
+    padding: 0;
+    background-color: #FFFFFF;
+    color: #000000;
+    font-size: 13px;
+    font-family: "sans serif",tahoma,verdana,helvetica;
+    word-break: break-word;
+    line-height: 1.5;
+}
+td {
+    font-size: 13px;
+    font-family: "sans serif",tahoma,verdana,helvetica;
+}
+p {
+    line-height: 1.2;
+    margin: 0;
+}
+.ke-flash {
+    border:1px solid #AAAAAA;
+    background-image:url(./flash.gif);
+    background-position:center center;
+    background-repeat:no-repeat;
+    width:100px;
+    height:100px;
+}
+.ke-rm {
+    border:1px solid #AAAAAA;
+    background-image:url(./rm.gif);
+    background-position:center center;
+    background-repeat:no-repeat;
+    width:100px;
+    height:100px;
+}
+.ke-media {
+    border:1px solid #AAAAAA;
+    background-image:url(./media.gif);
+    background-position:center center;
+    background-repeat:no-repeat;
+    width:100px;
+    height:100px;
+}
+table {
+    border-collapse:collapse;
+}
+table.ke-zeroborder td {
+    border:1px dotted #AAAAAA;
+}

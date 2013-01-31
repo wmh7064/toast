@@ -1,3 +1,17 @@
 assets/
 protected/runtime/
 themes/classic/views/
+!/www/assets/
+!/www/protected/extensions/CJuiDateTimePicker/assets/
+!/www/protected/extensions/autocomplete/assets/
+!/www/protected/extensions/ztree/assets/
+!/www/protected/extensions/yii-debug-toolbar/assets/
+!/www/protected/extensions/timereditor/assets/
+!/www/protected/extensions/select2/assets/
+!/www/protected/extensions/querybuilder/assets/
+!/www/protected/extensions/masspicker/assets/
+!/www/protected/extensions/kindeditor/assets/
+!/www/protected/extensions/jqgrid/assets/
+!/www/protected/extensions/highcharts/assets/
+!/www/protected/extensions/fullcalendar/assets/
+!/www/protected/extensions/combobox/assets/
