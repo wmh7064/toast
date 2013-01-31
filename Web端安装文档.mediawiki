@@ -52,8 +52,10 @@ mysql -uroot -p < <DocumentRoot>/toast/protected/data/toast.sql
 XAMPP环境的mysql命令在/opt/lampp/bin路径下
 
 == 修改配置文件 ==
-前端配置文件：<DocumentRoot>/toast/protected/config/config.php
-
+前端配置文件
+```
+<DocumentRoot>/toast/protected/config/config.php
+```
 需要分别修改以下部分：
 *数据库配置
 ```
