@@ -1,0 +1,131 @@
+__TOC__
+= 准备环境 =
+TOAST前端基于Linux下的PHP、Apache、 MySQL环境，建议使用XAMPP集成环境，下面将针对使用XAMPP集成环境或自己搭建环境分别介绍。
+== 使用XAMPP集成环境 ==
+从站点[http://www.apachefriends.org/zh_cn/xampp-linux.html]下载并按说明安装XAMPP环境。
+XAMPP启动时默认使用用户名nobody，所以需要将lampp目录转换到nobody名下
+```bash
+chown nobody /opt/lampp -R
+```
+启动XAMPP
+```bash
+/opt/lampp/lampp start
+```
+== 通过YUM安装 ==
+安装Apache
+```bash
+yum install httpd
+```
+安装MySQL
+```bash
+yum install mysql mysql-server mysql-libs
+```
+安装PHP
+```bash
+yum install php php-cli php-common php-pdo php-mysql php-ldap php-mbstring
+```
+启动服务：
+```bash
+service httpd mysqld start
+```
+
+= 部署代码 =
+git clone下载最新源码
+将前端www目录拷贝至Apache的默认DocumentRoot下，并重命名为toast
+XAMPP环境下：
+```bash
+cp -r www /opt/lampp/htdocs/toast
+```
+自建环境：
+```bash
+cp -r www /var/www/html/toast
+```
+需要为toast目录下的assets, upload, output, protected/runtime目录及其子目录添加所有用户读写权限
+```bash
+cd <DocumentRoot>/toast;
+chmod 777 assets upload output protected/runtime -R
+```
+创建toast数据库
+```bash
+/opt/lampp/bin/mysql -uroot -p < <DocumentRoot>/toast/protected/data/toast.sql
+```
+XAMPP环境的mysql命令在/opt/lampp/bin路径下，如果mysql在其他目录，请修改到相应的目录下。
+
+== 修改配置文件 ==
+前端配置文件
+```
+<DocumentRoot>/toast/protected/config/config.php
+```
+需要分别修改以下部分：
+*数据库配置
+```
+<?php
+// components
+'components' => array(
+    ...
+    // define database configurations
+    'db' => array(
+        'connectionString' => 'mysql:host=localhost;dbname=toast',
+        'emulatePrepare' => true,
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8',
+        'tablePrefix' => '',
+    ),
+    ...
+)
+?>
+```
+*其他相关配置
+```
+<?php
+// parameters
+'params' => array(
+    'runFilePath' => '/tmp/toast',   //前后端接口目录，对应后端配置文件中的monitor_path，如果不存在需要创建
+    'parserPath' => dirname(__FILE__) . '/../parsers/',
+    'stageLockFile' => dirname(__FILE__) . '/../runtime/stage.lock.',
+    'runOutputPath' => '/tmp/toast_output/',    //运行输出日志保存路径，对应后端配置文件中的log_path,如果不存在需要创建
+    'uploadPath' => dirname(__FILE__) . '/../../upload/attachments/',
+    'ciConfigSample' => dirname(__FILE__) . '/../data/ci_run.conf.sample',
+    'winAgentLink' => '/upload/public/toastagent.msi',    //Windows Agent二进制文件存放路径
+    'rraPath' => '/tmp/rra',    //测试机监控元数据文件保存路径，对应后端配置文件中的rrd_path,如果不存在需要创建
+    'pageSize' => 5,
+    'dateFormat' => 'Y-m-d H:i:s',
+    ...
+)
+?>
+```
+
+== 为Apache添加VirtualHost ==
+=== XAMPP环境 ===
+修改/opt/lampp/etc/httpd.conf文件，将Include etc/extra/httpd-vhosts.conf一行取消注释。
+修改/opt/lampp/etc/extra/httpd-vhosts.conf文件，添加如下内容：
+```xml
+<VirtualHost *:80> 
+    ServerAdmin admin@localhost.com 
+    DocumentRoot /opt/lampp/htdocs/toast 
+    ErrorLog logs/toast-error_log 
+    CustomLog logs/toast-access_log common 
+
+   <Directory "/opt/lampp/htdocs/toast"> 
+        AllowOverride All 
+        Options Indexes FollowSymLinks ExecCGI Includes 
+        Order allow,deny 
+        Allow from all 
+    </Directory> 
+</VirtualHost> 
+```
+重启Apache
+```bash
+/opt/lampp/lampp restartapache
+```
+===自建环境===
+修改/etc/httpd/conf/httpd.conf文件，添加上面 VirtualHost内容至文件尾
+重启Apache
+```
+service httpd restart
+```
+
+浏览器打开[http://localhost]（修改为相应的机器名或者ip），默认管理员权限的用户名密码为：
+<br/>用户名：admin
+<br/>密码：123456
