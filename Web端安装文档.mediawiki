@@ -47,9 +47,9 @@ chmod 777 assets upload output protected/runtime -R
 ```
 创建toast数据库
 ```bash
-mysql -uroot -p < <DocumentRoot>/toast/protected/data/toast.sql
+/opt/lampp/bin/mysql -uroot -p < <DocumentRoot>/toast/protected/data/toast.sql
 ```
-XAMPP环境的mysql命令在/opt/lampp/bin路径下
+XAMPP环境的mysql命令在/opt/lampp/bin路径下，如果mysql在其他目录，请修改到相应的目录下。
 
 == 修改配置文件 ==
 前端配置文件
