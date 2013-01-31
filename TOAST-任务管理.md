@@ -13,8 +13,7 @@
 点击“新建”任务可以创建新的任务。在新建任务界面，需要输入关于任务的一些常规信息，例如：任务类型、名称、负责人、所属项目等，有几个字段需要着重说明一下，
 * 任务类型，包括单元测试、功能测试、持续集成（测试）。选择不同的任务类型，在后面的添加“子任务”向导中出现的默认界面会略有不同。
 * 定时运行，设置定时运行时间，可以设置常用的每日运行。
-* SVN触发，设置svn 链接，在指定的svn url有代码变更的时候，会触发这个任务的运行。（这个依赖后端对svn服务器做配置，参见后端安装文档 <a href="https://github.com/taobao/toast/wiki/Controller%E5%90%8E%E7%AB%AF%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3" target="_blank">Controll后端安装文档</a>
-
+* SVN触发，设置svn 链接，在指定的svn url有代码变更的时候，会触发这个任务的运行。（这个依赖后端对svn服务器做配置，参见后端安装文档 <a href="https://github.com/taobao/toast/wiki/Controller%E5%90%8E%E7%AB%AF%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3" target="_blank">Controll后端安装文档</a> )
 <br>
 如下图所示，
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/new-job.png"/>
