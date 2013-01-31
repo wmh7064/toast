@@ -88,7 +88,7 @@ XAMPP环境的mysql命令在/opt/lampp/bin路径下
     'uploadPath' => dirname(__FILE__) . '/../../upload/attachments/',
     'ciConfigSample' => dirname(__FILE__) . '/../data/ci_run.conf.sample',
     'winAgentLink' => '/upload/public/toastagent.msi',    //Windows Agent二进制文件存放路径
-    'rraPath' => '/tmp/rra',    //测试机监控元数据文件保存路径，对应后端配置文件中的rrd_path
+    'rraPath' => '/tmp/rra',    //测试机监控元数据文件保存路径，对应后端配置文件中的rrd_path,如果不存在需要创建
     'pageSize' => 5,
     'dateFormat' => 'Y-m-d H:i:s',
     ...
