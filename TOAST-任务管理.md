@@ -35,7 +35,9 @@
 <br>
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/add-command-ci-view.png" width="50%"/>
 * 用例模式
-
+用例模式，是指在定义一个任务需要指定这个任务由哪些用例组成，这里的前提条件是必须使用TOAST用例管理的功能，即把你的测试用例注册到用例系统中，才可以创建任务的时候选择已有的用例。<a href="https://github.com/taobao/toast/wiki/TOAST-%E7%94%A8%E4%BE%8B%E7%AE%A1%E7%90%86" target="_blank">参见用例管理使用手册</a>
+<br>
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/add-command-testcase-view.png="50%"/>
 ## 运行任务
 * 手动运行
 * SVN触发运行
