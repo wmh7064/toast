@@ -15,7 +15,7 @@ Hello，这里是TOAST文档首页!
 *** [https://github.com/taobao/toast/wiki/%E4%BA%A7%E5%93%81%E7%AE%A1%E7%90%86 产品管理]
 *** [http://taobao.github.com/toast TOAST 用户管理 (Jiaoba)]
 ** 插件使用
-*** [https://github.com/taobao/toast/wiki/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95ci_run%E7%9A%84%E4%BD%BF%E7%94%A8 TOAST 持续集成插件ci_run的使用]
+*** [https://github.com/taobao/toast/wiki/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95ci_run%E7%9A%84%E4%BD%BF%E7%94%A8 TOAST 持续集成插件ci_run的使用](gongzhi)
 *** [https://github.com/taobao/toast/wiki/unittest_run%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C 单元测试插件unittest_run的使用]
 *** [https://github.com/taobao/toast/wiki/unittest_run%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C 测试用例运行插件case_run 的使用]
 ** [https://github.com/taobao/toast/wiki/API API]
