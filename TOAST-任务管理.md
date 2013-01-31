@@ -31,7 +31,9 @@
 <br>
 <img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/add-command-unittest-view.png" width="50%"/>
 * 命令模式：持续集成视图
-持续集成视图是在任务类型中选择“持续集成”之后的默认视图。注意，持续集成视图需要在Agent端安装的“持续集成”插件(<a href="https://github.com/taobao/toast/wiki/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95ci_run%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank">)才能运行。
+持续集成视图是在任务类型中选择“持续集成”之后的默认视图。注意，持续集成视图需要在Agent端安装的“持续集成”插件(<a href="https://github.com/taobao/toast/wiki/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95ci_run%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank">参见插件ci_run使用手册</a>)才能运行。
+<br>
+<img src="https://raw.github.com/wiki/taobao/toast/images/toast-job-mgmt/add-command-ci-view.png" width="50%"/>
 * 用例模式
 
 ## 运行任务
