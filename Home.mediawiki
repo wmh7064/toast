@@ -4,7 +4,7 @@ Hello，这里是TOAST文档首页!
 
 * 用户使用手册
 ** 安装文档
-*** [https://github.com/taobao/toast/wiki/Web%E7%AB%AF%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3 Web前端安装文档]
+*** [https://github.com/taobao/toast/wiki/Web%E7%AB%AF%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3 Web端安装文档]
 *** [https://github.com/taobao/toast/wiki/Controller%E5%90%8E%E7%AB%AF%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3 Controller后端安装文档]
 *** [https://github.com/taobao/toast/wiki/Agent%E7%AB%AF%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3 Agent端安装文档 ]
 
