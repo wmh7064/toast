@@ -25,10 +25,10 @@ using namespace std;
 // install following packets
 // sudo yum install rrdtool -b current
 // sudo yum install monitor-rrdtool-devel -b current
-
+#define NAME_MAX_LENGTH   1024
 int CreateMemoryRRD(const string &hostname)
 {
-    char name[64];   
+    char name[NAME_MAX_LENGTH];   
     char *argv[128];
     int argc = 0;
     char start[64];
@@ -67,7 +67,7 @@ int CreateMemoryRRD(const string &hostname)
 }
 int UpdateMemoryRRD(const string &hostname, int total, int free)
 {
-    char name[64];
+    char name[NAME_MAX_LENGTH];
     char *argv[128];
     int argc = 0;
     struct stat st;
@@ -94,7 +94,7 @@ int UpdateMemoryRRD(const string &hostname, int total, int free)
 }
 int CreateCPURRD(const string &hostname)
 {
-    char name[64];   
+    char name[NAME_MAX_LENGTH];   
     char *argv[128];
     int argc = 0;
     char start[64];
@@ -135,7 +135,7 @@ int CreateCPURRD(const string &hostname)
 }
 int UpdateCPURRD(const string &hostname, int idle, int system, int user)
 {
-    char name[64];
+    char name[NAME_MAX_LENGTH];
     char *argv[128];
     int argc = 0;
     struct stat st;
@@ -162,7 +162,7 @@ int UpdateCPURRD(const string &hostname, int idle, int system, int user)
 }
 int CreateDiskRRD(const string &hostname)
 {
-    char name[64];   
+    char name[NAME_MAX_LENGTH];   
     char *argv[128];
     int argc = 0;
     char start[64];
@@ -206,7 +206,7 @@ int CreateDiskRRD(const string &hostname)
 }
 int UpdateDiskRRD(const string &hostname, int total, int free, int read, int write)
 {
-    char name[64];
+    char name[NAME_MAX_LENGTH];
     char *argv[128];
     int argc = 0;
     struct stat st;
@@ -233,7 +233,7 @@ int UpdateDiskRRD(const string &hostname, int total, int free, int read, int wri
 }
 int CreateNetworkRRD(const string &hostname)
 {
-    char name[64];   
+    char name[NAME_MAX_LENGTH];   
     char *argv[128];
     int argc = 0;
     char start[64];
@@ -277,7 +277,7 @@ int CreateNetworkRRD(const string &hostname)
 }
 int UpdateNetworkRRD(const string &hostname, int inbytes, int outbytes, int inpackets, int outpackets)
 {
-    char name[64];
+    char name[NAME_MAX_LENGTH];
     char *argv[128];
     int argc = 0;
     struct stat st;
@@ -305,7 +305,7 @@ int UpdateNetworkRRD(const string &hostname, int inbytes, int outbytes, int inpa
 
 int CreateLoadRRD(const string &hostname)
 {
-    char name[64];   
+    char name[NAME_MAX_LENGTH];   
     char *argv[128];
     int argc = 0;
     char start[64];
@@ -348,7 +348,7 @@ int CreateLoadRRD(const string &hostname)
 // parameter = load * 100
 int UpdateLoadRRD(const string &hostname, int one_minite, int five_minute, int fifteen_minute)
 {
-    char name[64];
+    char name[NAME_MAX_LENGTH];
     char *argv[128];
     int argc = 0;
     struct stat st;
