@@ -7,7 +7,8 @@
     *agent 为toast客户端
     *agentcmdrsp agent和controller之间消息定义
     *ciagent 是为持续集成而实现的特殊agent，它监控用户指定的svn地址，如果发现其监控的svn地址下的代码有更新，
-             则执行相应的测试任务
+             则执行相应的测试任务,在第一个检测周期，系统会初始化各个svn url的版本，下一个周期才会根据初始信息
+             检查有无版本更新
     *config 配置文件处理代码
     *controller  为toast的服务器端，分发前端发送的命令给指定的agent，并收集任务执行结果
     *daemon  unix系统daemonize代码
