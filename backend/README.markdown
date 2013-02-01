@@ -27,13 +27,28 @@
 --------
     *toast应用到的开源库包括libcurl,libjson, log4cpp 这三个库controller和agent均有用到，
      这3个均被静态库，代码中libs目录已有这三个库编译好的文件，如果编译过程中这三个库有问题，请按
-     各库说明文档分别编译，将静态库放在libs目录
+     各库说明文档分别编译，并将静态库放在libs目录,头文件放在include目录
+     
+     libcurl: http://curl.haxx.se/libcurl/
+     libjson: http://sourceforge.net/projects/libjson/
+     log4cpp: http://sourceforge.net/projects/log4cpp/
+     编译这三个库请按各自说明文件
+     一般情况下工程里这三个库文件已经可以，不需要你自行编译这三个库
+     
      另外controller 还用到rrdtool， 要编译controller需要rrdtool-devel
+     rrdtool请参考http://oss.oetiker.ch/rrdtool/，或者通过其他方式获取rrdtool开发包
+     
      对于svn监控agent还需要svnclient库，需要根据平台安装相应的开发包，RHEL需要安装subversion-devel
+     版本大于1.6
+     
 
-    *如果所有库都准备好，首先在backend目录Make, 此时agent和controller公共代码以及agent都应编译成功
-     agent在agent目录内可执行晚间名toast
-     controller需要单独在controller目录再次make
+    *如果所有库都准备好
+     cd backend
+     在backend目录 make
+     此时agent以及agent和controller公共代码都应编译成功(cd agent, 检查是否有agent可执行文件toast,有说明编译成功)
+     cd controller
+     在controller目录 make
+     如果make成功文件夹下应该有controller可执行文件toastcontroller
 
      我们在下列平台下编译通过：
      rhel 5， 6 centos 6 其中controller需要rrdtool rrdtool-devel， ciagent需要libsubversion-devel
