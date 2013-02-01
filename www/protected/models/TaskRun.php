@@ -408,7 +408,7 @@ class TaskRun extends Model
      * @param string $domain
      * @param string $split 
      */
-    public function addReportTo($receiver, $domain = 'taobao.com', $split = ',')
+    public function addReportTo($receiver, $split = ',')
     {
         $reportToArr = explode($split, $this->report_to);
         $receiverArr = array();
@@ -426,11 +426,7 @@ class TaskRun extends Model
         }
         
         $receiveUser = User::model()->findByAttributes(array('username' => $receiver));
-        if(null === $receiveUser)
-        {
-            $receiver .= '@' . $domain;
-        }
-        else
+        if($receiveUser)
         {
             $receiver = $receiveUser->email;
         }
