@@ -60,11 +60,6 @@ class User extends Model
      */
     public $status;
     /**
-     * UserGroup
-     * @var integer
-     */
-    public $group_id;
-    /**
      * Create time.
      * @var date
      */
@@ -131,7 +126,7 @@ class User extends Model
             array('email', 'length', 'max' => 255),
             array('email', 'email'),
             array('username, email', 'unique'),
-            array('username, role, email, status, group_id, pinyin, abbreviation', 'safe'),
+            array('username, role, email, status, pinyin, abbreviation', 'safe'),
         );
     }
 
@@ -181,7 +176,6 @@ class User extends Model
             'abbreviation' => Yii::t('User', 'Abbreviation'),
             'role' => Yii::t('User', 'Role'),
             'status' => Yii::t('User', 'Status'),
-            'group_id' => Yii::t('User', 'UserGroup'),
             'create_time' => Yii::t('User', 'Create Time'),
             'update_time' => Yii::t('User', 'Update Time')
         );

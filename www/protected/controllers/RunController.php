@@ -26,7 +26,7 @@ class RunController extends Controller
             ),
             array(
                 'allow',
-                'actions' => array('index', 'view', 'case', 'openOutput', 'cancel', 'updateCause', 'getDetail', 'getStages', 'getTaskRunStatus', 'getCommandRunStatus'),
+                'actions' => array('index', 'view', 'case', 'openOutput', 'cancel', 'getDetail', 'getStages', 'getTaskRunStatus', 'getCommandRunStatus'),
                 'users' => array('@')
             ),
             array(
@@ -410,30 +410,6 @@ class RunController extends Controller
         $chart->getPie()->Render();
     }
 
-    public function actionUpdateCause()
-    {
-        return;
-//        $run = $this->loadModel('TaskRun');
-//        if(isset($_REQUEST['failure_cause']))
-//        {
-//            $json['status'] = 'failure';
-//            $run->failure_cause = trim($_REQUEST['failure_cause']);
-//            if($run->save())
-//            {
-//                $json['status'] = 'success';
-//                $json['cause'] = $run->failure_cause;
-//                
-//                $msg = 'Update run #' . $run->id . ' failure cause By ' . Yii::app()->user->name;
-//                Yii::log($msg, 'trace', 'toast.RunController.actionUpdateCause');
-//                
-//                $vRun = VTaskRun::model()->findByPk($run->id);
-//                $this->mail($vRun);
-//            }
-//            echo CJSON::encode($json);
-//        }
-//        $this->mail($vRun);
-    }
-    
     private function mail($vRun)
     {
         $this->layout = false;

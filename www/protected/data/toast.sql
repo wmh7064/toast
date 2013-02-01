@@ -250,6 +250,7 @@ CREATE  TABLE IF NOT EXISTS `toast`.`task_run` (
   `name` VARCHAR(255) NOT NULL ,
   `dev_log` TEXT NULL ,
   `report_to` TEXT NULL ,
+  `build` TEXT NULL ,
   `case_total_amount` INT UNSIGNED NOT NULL DEFAULT 0 ,
   `case_pass_amount` INT UNSIGNED NOT NULL DEFAULT 0 ,
   `case_fail_amount` INT UNSIGNED NOT NULL DEFAULT 0 ,
@@ -579,6 +580,7 @@ CREATE  TABLE IF NOT EXISTS `toast`.`parser` (
   UNIQUE INDEX `parser_class_UNIQUE` (`parser_class` ASC) )
 ENGINE = InnoDB;
 
+USE `toast` ;
 
 -- -----------------------------------------------------
 -- Placeholder table for view `toast`.`vproduct`
@@ -618,7 +620,7 @@ CREATE TABLE IF NOT EXISTS `toast`.`vtask` (`id` INT, `name` INT, `responsible` 
 -- -----------------------------------------------------
 -- Placeholder table for view `toast`.`vtask_run`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `toast`.`vtask_run` (`id` INT, `name` INT, `dev_log` INT, `report_to` INT, `case_total_amount` INT, `case_pass_amount` INT, `case_fail_amount` INT, `case_block_amount` INT, `case_skip_amount` INT, `status` INT, `result` INT, `is_last` INT, `created_by` INT, `updated_by` INT, `start_time` INT, `stop_time` INT, `create_time` INT, `update_time` INT, `task_id` INT, `product_id` INT, `product_name` INT, `project_path` INT, `project_id` INT, `project_name` INT, `task_name` INT, `created_by_username` INT, `created_by_realname` INT, `updated_by_username` INT, `updated_by_realname` INT);
+CREATE TABLE IF NOT EXISTS `toast`.`vtask_run` (`id` INT, `name` INT, `dev_log` INT, `report_to` INT, `build` INT, `case_total_amount` INT, `case_pass_amount` INT, `case_fail_amount` INT, `case_block_amount` INT, `case_skip_amount` INT, `status` INT, `result` INT, `is_last` INT, `created_by` INT, `updated_by` INT, `start_time` INT, `stop_time` INT, `create_time` INT, `update_time` INT, `task_id` INT, `product_id` INT, `product_name` INT, `project_path` INT, `project_id` INT, `project_name` INT, `task_name` INT, `created_by_username` INT, `created_by_realname` INT, `updated_by_username` INT, `updated_by_realname` INT);
 
 -- -----------------------------------------------------
 -- Placeholder table for view `toast`.`vreport`

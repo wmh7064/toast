@@ -125,7 +125,7 @@
             echo CHtml::tag('td', array(), $run->build);
             echo CHtml::tag('tr', array('class' => 'even'));
             echo CHtml::tag('th', array(), Yii::t('Run', 'Run Time'));
-            echo CHtml::tag('td', array(), CHtml::encode($run->run_time));
+            echo CHtml::tag('td', array(), CHtml::encode($run->run_times));
             echo CHtml::tag('tr', array('class' => 'odd'));
             echo CHtml::tag('th', array(), Yii::t('Run', 'Output'));
             echo CHtml::tag('td', array(), CHtml::link(Yii::t('Run', 'Download Output'),

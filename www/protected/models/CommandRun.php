@@ -79,6 +79,7 @@ class CommandRun extends Model
     {
         return 'command_run';
     }
+    
     public function rules()
     {
         return array(
@@ -86,8 +87,8 @@ class CommandRun extends Model
             array('command_id, machine_id, task_run_id, job_id, stage_num, status, result, 
                 created_by, run_times ', 'numerical', 'integerOnly' => true),
             array('name, command_id, machine_id, task_run_id, job_id, stage_num, 
-                sudoer, timeout, status, result, callback, return_code, desc_info, 
-                failure_cause, trigger, build, case_total_amount, case_pass_amount, 
+                sudoer, timeout, status, result, return_code, desc_info, 
+                build, case_total_amount, case_pass_amount, 
                 case_fail_amount, case_skip_amount, case_block_amount, 
                 created_by, create_time, update_time, start_time, stop_time, run_times', 'safe'),
         );
@@ -115,12 +116,10 @@ class CommandRun extends Model
             'stop_time' => Yii::t('Run', 'Stop Time'),
             'sudoer' => Yii::t('Run', 'Sudoer'),
             'timeout' => Yii::t('Run', 'Timeout'),
-            'trigger' => Yii::t('Run', 'Trigger'),
             'result' => Yii::t('Run', 'Result'),
             'build' => Yii::t('Run', 'Build'),
             'desc_info' => Yii::t('Run', 'Describe Info'),
             'append_info' => Yii::t('Run', 'Agent Output'),
-            'failure_cause' => Yii::t('Run', 'Failure Cause'),
             'created_by' => Yii::t('Run', 'Created By'),
             'create_time' => Yii::t('Run','Create Time'),
             'update_time' => Yii::t('Run','Update Time'),
@@ -268,7 +267,7 @@ class CommandRun extends Model
         
         $config['Commands'] = array($arr);
         
-        Yii::log(CJSON::encode($config), 'trace', 'toast.TaskRun.sendAction');
+        Yii::log(CJSON::encode($config), 'trace', 'toast.CommandRun.sendAction');
 
         $timestamp = time();
         $iniFile = Yii::app()->params['runFilePath'] . "/CommandRun_{$action}_{$this->id}_{$timestamp}.ini";

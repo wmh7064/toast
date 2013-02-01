@@ -14,7 +14,6 @@ var toast = {
     getCommandOpts : getRootPath() + "/command/getCommandOpts",
     saveTwfDraft: getRootPath() + "/twf/savedraft",
     dropTwfDraft: getRootPath() + "/twf/dropdraft",
-    updateCause: getRootPath() + "/run/updateCause",
     updateAgent: getRootPath() + "/machine/updateAgent",
     deleteMachine: getRootPath() + "/machine/delete",
     machineList: getRootPath() + "/machine/index",
