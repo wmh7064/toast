@@ -37,10 +37,20 @@
      一般情况下工程里这三个库文件已经可以，不需要你自行编译这三个库
      
      另外controller 还用到rrdtool， 要编译controller需要rrdtool-devel
+     CentOS:
+            sudo yum install rrdtool
+            sudo yum install rrdtool-devel
+     Ubuntu:
+            sudo apt-get install rrdtool librrd-dev
      rrdtool请参考http://oss.oetiker.ch/rrdtool/，或者通过其他方式获取rrdtool开发包
      
      对于svn监控agent还需要svnclient库，需要根据平台安装相应的开发包，RHEL需要安装subversion-devel
      版本大于1.6
+     CentOS:
+            sudo yum install subversion
+            sudo yum install subversion-devel
+     Ubuntu:
+            sudo apt-get install libapr1-dev, libaprutil1-dev libsvn-dev
      
 
     *如果所有库都准备好
