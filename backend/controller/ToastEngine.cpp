@@ -71,43 +71,59 @@ namespace toast
         {
             g_config->monitor_path = SimpleConfig::Instance()->getStringValue("monitor_path", "/tmp/toast/");
             g_config->rrd_path       = SimpleConfig::Instance()->getStringValue("rrd_path", "/tmp/rra");
-	     DIR * dir = opendir(g_config->rrd_path.c_str());
-	     if(!dir)      // if the folder is not exist, create it
-	     	{
-                    Log::Info("There is  no rrd directory " + g_config->rrd_path);
-                    Log::Info("Create a new directory");
-	     	    if(mkdir(g_config->rrd_path.c_str(), S_IRWXU|S_IRWXG|S_IRWXO) != 0)
-	     	    	{
-	     	    	     Log::Error("Create rrd directory failed");
-			     exit(1);
-	     	    	}
-	     	}
-		 else
-		 	closedir(dir);
+            DIR * dir = opendir(g_config->monitor_path.c_str());
+            if(!dir)      // if the folder is not exist, create it
+            {
+                Log::Info("There is  no command file directory " + g_config->monitor_path);
+                Log::Info("Create a new directory");
+                if(mkdir(g_config->rrd_path.c_str(), S_IRWXU|S_IRWXG|S_IRWXO) != 0)
+                {
+                    Log::Error("Create command file directory " + monitor_path + " failed");
+                    exit(1);
+                }
+            }
+            else
+            {
+                closedir(dir);
+            }
+
+            dir = opendir(g_config->rrd_path.c_str());
+            if(!dir)      // if the folder is not exist, create it
+            {
+                Log::Info("There is  no rrd directory " + g_config->rrd_path);
+                Log::Info("Create a new directory");
+                if(mkdir(g_config->rrd_path.c_str(), S_IRWXU|S_IRWXG|S_IRWXO) != 0)
+                {
+                    Log::Error("Create rrd directory failed");
+                    exit(1);
+                }
+            }
+            else
+                closedir(dir);
             g_config->num_response_process_threads = SimpleConfig::Instance()->getIntegerValue("response_thread_num", 6);
             g_config->log_path = SimpleConfig::Instance()->getStringValue("log_path", ".");
-	     dir = opendir(g_config->log_path.c_str());
-	     if(!dir)      // if the folder is not exist, create it
-	     	{
-                    Log::Info("There is no log directory " + g_config->log_path);
-                    Log::Info("Create a new log directory");
-	     	    if(mkdir(g_config->log_path.c_str(), S_IRWXU|S_IRWXG|S_IRWXO) != 0)
-	     	    	{
-	     	    	     Log::Error("Create log directory failed, please create the folder manual and restart controller");
-			     exit(1);
-	     	    	}
-	     	}
-		else
-			closedir(dir);
-	     g_config->root_url = SimpleConfig::Instance()->getStringValue("root_url", "http://toast url/");
+            dir = opendir(g_config->log_path.c_str());
+            if(!dir)      // if the folder is not exist, create it
+            {
+                Log::Info("There is no log directory " + g_config->log_path);
+                Log::Info("Create a new log directory");
+                if(mkdir(g_config->log_path.c_str(), S_IRWXU|S_IRWXG|S_IRWXO) != 0)
+                {
+                    Log::Error("Create log directory failed, please create the folder manual and restart controller");
+                    exit(1);
+                }
+            }
+            else
+                closedir(dir);
+            g_config->root_url = SimpleConfig::Instance()->getStringValue("root_url", "http://toast url/");
             g_config->task_list_url = SimpleConfig::Instance()->getStringValue("task_list_url", "job/getallruntime");
             g_config->update_agent_url = SimpleConfig::Instance()->getStringValue("agent_info_url", "machine/updatemachine");
-	     g_config->update_all_agent_url = SimpleConfig::Instance()->getStringValue("update_all_agent_url", "machine/updateallmachine");
-	     g_config->update_all_run_url = SimpleConfig::Instance()->getStringValue("update_all_run_url", "run/updateallrun");
-	     g_config->update_run_url = SimpleConfig::Instance()->getStringValue("update_run_url", "run/updaterun");
+            g_config->update_all_agent_url = SimpleConfig::Instance()->getStringValue("update_all_agent_url", "machine/updateallmachine");
+            g_config->update_all_run_url = SimpleConfig::Instance()->getStringValue("update_all_run_url", "run/updateallrun");
+            g_config->update_run_url = SimpleConfig::Instance()->getStringValue("update_run_url", "run/updaterun");
             g_config->run_timer_task_url = SimpleConfig::Instance()->getStringValue("run_timer_task_url", "api/runtaskbyid");
-	     g_config->CI_agent = SimpleConfig::Instance()->getStringValue("CIAgent", "ciagent name");
-		}
+            g_config->CI_agent = SimpleConfig::Instance()->getStringValue("CIAgent", "ciagent name");
+        }
         catch(...)
         {
             Log::Error("Failed to get socket/group information from config file ");
@@ -131,17 +147,17 @@ namespace toast
     void ToastEngine::Initlize()
     {
 
-	WebInterfaces::SetAllAgentToDown();
-	WebInterfaces::SetAllRunToComplete();
+        WebInterfaces::SetAllAgentToDown();
+        WebInterfaces::SetAllRunToComplete();
 
         // initlize timer task
         g_timer_task_manager = new (std::nothrow)TimerTaskManager();
-	if(!g_timer_task_manager)
-		{
-		Log::Error("Create timer task manager failed");
-		return;
-		}
-	int timer_task_counter = WebInterfaces::GetTimerTaskList();
+        if(!g_timer_task_manager)
+        {
+            Log::Error("Create timer task manager failed");
+            return;
+        }
+        int timer_task_counter = WebInterfaces::GetTimerTaskList();
         Log::Info("There are %d timer tasks", timer_task_counter);
         ActiveAgentsManager::Instance();
         TaskRunManager::Instance()->Initlize();
@@ -194,25 +210,25 @@ namespace toast
             pool[i]->RequestStop();
         }
         MultiWorkQueueThreadPool::Destroy(g_agent_response_threads, 10);
-	 int timeout = 30;
+        int timeout = 30;
         for(size_t i=0; i<pool.size()&&timeout; i++)
         {
             while(!pool[i]->IsStoped()&&timeout)
             {
                 Log::Info("waiting for thread stop...");
-		  timeout--;
+                timeout--;
                 sleep(1);
             }
         }
-	if(timeout)
-		{
-		Log::Info("Normal exit");
-		exit(0);
-		}
-	else
-		{
-		Log::Info("Abnormal exit");
-	_exit(1);
-		}
+        if(timeout)
+        {
+            Log::Info("Normal exit");
+            exit(0);
+        }
+        else
+        {
+            Log::Info("Abnormal exit");
+            _exit(1);
+        }
     }
 }
