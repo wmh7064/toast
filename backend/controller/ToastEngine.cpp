@@ -78,7 +78,7 @@ namespace toast
                 Log::Info("Create a new directory");
                 if(mkdir(g_config->rrd_path.c_str(), S_IRWXU|S_IRWXG|S_IRWXO) != 0)
                 {
-                    Log::Error("Create command file directory " + monitor_path + " failed");
+                    Log::Error("Create command file directory " + g_config->monitor_path + " failed");
                     exit(1);
                 }
             }
