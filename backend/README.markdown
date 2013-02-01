@@ -92,8 +92,8 @@ ciagent配置文件
 controller 配置文件
 
     []
-    monitor_path = /tmp/toast     // controller接收前端命令文件目录，需要和前端配合设置，controller不断扫描这个目录，
-                                 如果有命令文件则读出，执行命令，然后删除命令
+    monitor_path = /tmp/toast/     // controller接收前端命令文件目录，需要和前端配合设置，controller不断扫描这个目录，
+                                 如果有命令文件则读出，执行命令，然后删除命令，注意后面的'/' 是必须的，否则会出现处理文件错误
     rrd_path = /tmp/rra           // controller将测试集性能信息以rrd文件方式写入这个目录
     log_path = /home/toast/output  // 命令log文件目录， controller收集所有命令的stdout，stderr信息，
                                   并保存在文件中，文件名为相应执行id，这些命令均在测试机上执行
