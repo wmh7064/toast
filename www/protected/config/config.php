@@ -49,7 +49,7 @@ return array(
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
-                '<action:(login|logout|about|signup)>' => 'site/<action>',
+                '<action:(index|login|logout|about|signup)>' => 'site/<action>',
             ),
         ),
         // define database configurations
