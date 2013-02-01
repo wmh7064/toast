@@ -165,7 +165,7 @@ CREATE  TABLE IF NOT EXISTS `toast`.`machine` (
   `agent_version` VARCHAR(45) NULL ,
   `desc_info` TEXT NULL ,
   `ip` VARCHAR(45) NULL ,
-  `hostname` VARCHAR(45) NULL ,
+  `hostname` VARCHAR(255) NULL ,
   `platform` VARCHAR(45) NULL ,
   `kernel` VARCHAR(45) NULL ,
   `os` VARCHAR(45) NULL ,
