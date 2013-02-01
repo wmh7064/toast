@@ -115,7 +115,6 @@
                                     'operators' => array(
                                         '==' => '等于',
                                         '-=' => '不等于',
-                                        'tl' => 'TL等于',
                                     ),
                                     'data' => Yii::app()->user->getUsernameOpts()
                                 ),

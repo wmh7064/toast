@@ -7,7 +7,8 @@
     *agent 为toast客户端
     *agentcmdrsp agent和controller之间消息定义
     *ciagent 是为持续集成而实现的特殊agent，它监控用户指定的svn地址，如果发现其监控的svn地址下的代码有更新，
-             则执行相应的测试任务
+             则执行相应的测试任务,在第一个检测周期，系统会初始化各个svn url的版本，下一个周期才会根据初始信息
+             检查有无版本更新
     *config 配置文件处理代码
     *controller  为toast的服务器端，分发前端发送的命令给指定的agent，并收集任务执行结果
     *daemon  unix系统daemonize代码
@@ -36,10 +37,20 @@
      一般情况下工程里这三个库文件已经可以，不需要你自行编译这三个库
      
      另外controller 还用到rrdtool， 要编译controller需要rrdtool-devel
+     CentOS:
+            sudo yum install rrdtool
+            sudo yum install rrdtool-devel
+     Ubuntu:
+            sudo apt-get install rrdtool librrd-dev
      rrdtool请参考http://oss.oetiker.ch/rrdtool/，或者通过其他方式获取rrdtool开发包
      
      对于svn监控agent还需要svnclient库，需要根据平台安装相应的开发包，RHEL需要安装subversion-devel
      版本大于1.6
+     CentOS:
+            sudo yum install subversion
+            sudo yum install subversion-devel
+     Ubuntu:
+            sudo apt-get install libapr1-dev, libaprutil1-dev libsvn-dev
      
 
     *如果所有库都准备好
@@ -49,6 +60,9 @@
      cd controller
      在controller目录 make
      如果make成功文件夹下应该有controller可执行文件toastcontroller
+     cd ciagent
+     在ciagent目录 make
+     此时应该有toast可执行文件
 
      我们在下列平台下编译通过：
      rhel 5， 6 centos 6 其中controller需要rrdtool rrdtool-devel， ciagent需要libsubversion-devel

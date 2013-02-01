@@ -32,12 +32,12 @@ var toast = {
     getCode: getRootPath() + "/case/getcode",
     viewCase: getRootPath() + "/case/view/id/",
     
-    bugfreeUrl: "http://bugfree.corp.taobao.com",
     heartbeat : 5000,
     
     compare: {
         frontcompare: '/home/a/bin/frontcompare'
     },
     
-    unittest: '/home/a/bin/toast/script/unittest_run'
+    ut_run: '/home/a/bin/toast/script/unittest_run',
+    ci_run: '/home/a/bin/toast/script/ContinuouseIntegration/ci_run.py'
 };

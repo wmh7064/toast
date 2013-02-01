@@ -24,7 +24,6 @@ class QueryBuilder
     const LT_PATTERN = '#^<{(.*)}$#';
     const LE_PATTERN = '#^<={(.*)}$#';
     const UNDER_PATTERN = '#^in{(.*)}#';
-    const TL_PATTERN = '#^tl{(.*)}#';
     
     const ESCAPE = '\\';
     const DELIMITER = ',';
@@ -137,18 +136,6 @@ class QueryBuilder
         {
             $val = $matches[1];
             $condition->compare($field, '/' . $val, true, $operator);
-        }
-        else if(preg_match(self::TL_PATTERN, $val, $matches))
-        {
-            $val = $matches[1];
-            $user = User::model()->findByAttributes(array('username' => $val));
-            $reports = array();
-            if($user !== null)
-            {
-                $ldap = new LDAP(Option::model()->getLDAPOpt());
-                $reports = $ldap->getReporters($user->domain, $user->username);
-            }
-            $condition->addInCondition($field, $reports, $operator);
         }
         else
         {
