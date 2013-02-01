@@ -10,11 +10,14 @@ Below dependencies should be installed.
 * python pexpect, can be installed by pip
 
 
-### python package Setup command by pip
+### python package install command by pip
     $ /usr/bin/easy_install pip
     $ pip install paramiko
     $ pip install scpclient
     $ pip install simplejson
     $ pip install pexpect
 
-
+### dependency of unit test for unittest_run
+    # c/c++; lcov see ltp.sourceforge.net/coverage/lcov.php
+    # java; maven & cobertura
+    
