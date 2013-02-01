@@ -50,6 +50,9 @@
      cd controller
      在controller目录 make
      如果make成功文件夹下应该有controller可执行文件toastcontroller
+     cd ciagent
+     在ciagent目录 make
+     此时应该有toast可执行文件
 
      我们在下列平台下编译通过：
      rhel 5， 6 centos 6 其中controller需要rrdtool rrdtool-devel， ciagent需要libsubversion-devel
