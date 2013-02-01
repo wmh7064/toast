@@ -63,7 +63,7 @@ class MachineMonitor extends Machine
         foreach ($this->gmetrics as $i => $metric)
         {
             $len = 20-strlen($metric);
-            $rraPath = Yii::app()->param['rraPath'];
+            $rraPath = Yii::app()->params['rraPath'];
             $cmd .= " DEF:{$metric}={$rraPath}{$this->name}.{$this->group}.rrd:{$metric}:AVERAGE"
                    ." {$this->types[$metric]}:{$metric}#{$this->colors[$metric]}:{$metric}"
                    ." GPRINT:{$metric}:LAST:'%{$len}.2lf'"
