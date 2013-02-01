@@ -21,8 +21,6 @@ return array(
     'Result' => '运行结果',
     'Describe Info' => '描述信息',
     'Agent Output' => '远端输出',
-    'Failure Cause' => '失败原因',
-    'Trigger' => '触发运行结果',
     'Build' => 'Build',
     'Code Coverage' => '代码覆盖率',
     'Code Line Coverage' => '行覆盖率',

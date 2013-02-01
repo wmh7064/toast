@@ -138,7 +138,7 @@ class ReportController extends Controller
         $clazz = get_class($report);
         $this->layout = false;
         $condition = new CDbCriteria();
-         if($onlyfail)
+        if($onlyfail)
         {
              $condition->compare('case_fail_amount', '>0');
         }

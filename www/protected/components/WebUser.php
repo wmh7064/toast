@@ -313,17 +313,6 @@ class WebUser extends CWebUser
         return $username;
     }
     
-    public function getDomain()
-    {
-        $domain = '';
-        $user = $this->loadUser();
-        if($user !== null)
-        {
-            $domain = $user->domain;
-        }
-        return $domain;
-    }
-
     public function getPageSize()
     {
         $pageSize = 25; //Yii::app()->params['pageSize'];
