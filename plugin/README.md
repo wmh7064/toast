@@ -20,4 +20,8 @@ Below dependencies should be installed.
 ### dependency of unit test for unittest_run
     # c/c++; lcov see ltp.sourceforge.net/coverage/lcov.php
     # java; maven & cobertura
+    # php; phpunit
+    # python; unittest
+    # perl; Test::Class & Devel::Cover
+    # shell; shUnit2 + shcov
     
