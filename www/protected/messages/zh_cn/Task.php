@@ -52,7 +52,6 @@ return array(
     'Status Order' => '正常',
     'Status Disable' => '禁用',
     'Unknown Type({type})' => '未知任务类型({type})',
-    'Trigger' => '触发任务',
     'Build' => 'Build触发',
     'SVN URL' => 'SVN触发',
     'Exclusive' => '互斥运行',

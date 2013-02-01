@@ -20,9 +20,7 @@ class TaskRun extends Model
     public $result;
     public $status;
     public $build;
-    public $svn_url;
     public $report_to;
-    public $all_case_amount;
     public $dev_log;
     public $created_by;
     public $updated_by;
@@ -97,7 +95,6 @@ class TaskRun extends Model
             'updated_by' => Yii::t('Run', 'Updated By'),
             'create_time' => Yii::t('Run','Create Time'),
             'update_time' => Yii::t('Run','Update Time'),
-            'all_case_amount' => Yii::t('Run', 'Case Total Amount')
         );
     }
 
@@ -411,7 +408,7 @@ class TaskRun extends Model
      * @param string $domain
      * @param string $split 
      */
-    public function addReportTo($receiver, $domain = 'taobao.com', $split = ',')
+    public function addReportTo($receiver, $split = ',')
     {
         $reportToArr = explode($split, $this->report_to);
         $receiverArr = array();
@@ -429,11 +426,7 @@ class TaskRun extends Model
         }
         
         $receiveUser = User::model()->findByAttributes(array('username' => $receiver));
-        if(null === $receiveUser)
-        {
-            $receiver .= '@' . $domain;
-        }
-        else
+        if($receiveUser)
         {
             $receiver = $receiveUser->email;
         }

@@ -132,7 +132,7 @@ class VTaskRun extends TaskRun
         ));
     }
     
-    public function getCommiterEmails($domain = '@taobao.com')
+    public function getCommiterEmails()
     {
         $emails = array();
         if(!empty($this->dev_log) && $logArr = CJSON::decode($this->dev_log))
@@ -143,10 +143,6 @@ class VTaskRun extends TaskRun
                 if($user !== null)
                 {
                     $emails[] = $user->email;
-                }
-                else
-                {
-                    $emails[] = $log['author'] . $domain;
                 }
             }
         }

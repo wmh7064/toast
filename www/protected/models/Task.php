@@ -268,7 +268,6 @@ class Task extends Model
             ));
             $taskRun->task_id = $this->id;
             $taskRun->report_to = $this->report_to;
-            $taskRun->svn_url = $this->svn_url;
             $taskRun->status = CommandRun::STATUS_WAITING;
             $taskRun->result = CommandRun::RESULT_NULL;
             
