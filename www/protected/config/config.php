@@ -95,6 +95,7 @@ return array(
         'ciConfigSample' => dirname(__FILE__) . '/../data/ci_run.conf.sample',
         'winAgentLink' => '/upload/public/toastagent.msi',
         'rraPath' => '/tmp/rra/',
+        'caseRun' => '/home/ads/runcase/run_case', 
         'pageSize' => 5,
         'dateFormat' => 'Y-m-d H:i:s',
 

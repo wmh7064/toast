@@ -266,7 +266,7 @@ class TestCase extends Model
     
     public function getCommand()
     {
-        $command = '/home/ads/runcase/run_case -t ' . strtolower($this->getFrameworkText())
+        $command = Yii::app()->params['caseRun'] . ' -t ' . strtolower($this->getFrameworkText())
                           . ' -u ' . $this->code_url . ' -c ' . $this->id;
         if(!empty($this->func_name))
         {

@@ -57,7 +57,7 @@ var jobForm = function(){
                 command.push($(v).val());
             })
             if(command.length > 0) {
-                command.unshift("/home/a/bin/toast/script/unittest_run");
+                command.unshift(toast.ut_run);
             }
             if($("#other-opts").val()) {
                 command.push($("#other-opts").val());
@@ -193,7 +193,7 @@ var jobForm = function(){
     }
     
     var ciTabInit = function() {
-        jobForm.ciCommand = "/home/a/bin/toast/script/ContinuouseIntegration/ci_run.py"
+        jobForm.ciCommand = toast.ci_run
         $("#ci-config-input").change(function(){
             $(this).attr("name", "attachment")
             $("#job-form").ajaxSubmit({
