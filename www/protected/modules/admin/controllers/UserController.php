@@ -66,6 +66,7 @@ class UserController extends Controller
         if(isset($_POST['User']))
         {
             $user->attributes = $_POST['User'];
+            $user->password = User::encrypt($user->password);
             if($user->save())
             {
                 $msg = 'Create User #' . $user->id . ' ' . $user->username. ' By ' . Yii::app()->user->name;

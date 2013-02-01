@@ -86,7 +86,7 @@ class SignUpForm extends LoginForm
             $user = new User();
             $user->username = $this->username;
             $user->realname = $this->realname;
-            $user->password = $this->password;
+            $user->password = User::encrypt($this->password);
             $user->email = $this->email;
             $flag = true;
             if(!$user->save())
