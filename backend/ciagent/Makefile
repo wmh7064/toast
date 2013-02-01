@@ -29,7 +29,7 @@ STATLIB= ../log/liblog.a ../net/libnet.a ../poll/libepollmanager.a  ../threadpoo
 
 endif
 
-LINK= -lpthread -ldl -lrt -lsvn_client-1
+LINK= -lpthread -ldl -lrt -lapr-1 -lsvn_subr-1 -lsvn_fs-1 -lsvn_client-1
 
 INCLUDE=\
 	-I. \
