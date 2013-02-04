@@ -42,7 +42,7 @@ int GetLoadInfo(SystemPerformanceInfo *pSystemPerf)
 	pSystemPerf->load1min = load1mh * 100 + load1ml;
 	pSystemPerf->load5min = load5mh * 100 + load5ml;
 	pSystemPerf->load15min = load15mh * 100 + load15ml;
-
+        fclose(fp);
 	return 0;
 	
 }
