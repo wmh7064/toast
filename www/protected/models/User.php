@@ -121,7 +121,7 @@ class User extends Model
             array('username, realname, password, email, role', 'required'),
             array('username', 'length', 'min' => 3, 'max' => 20),
             array('username', 'match', 'pattern' => '/^[a-zA-z][a-zA-Z-_0-9\.]*$/'),
-            array('password', 'length', 'min' => 8),
+            array('password', 'length', 'min' => 5),
             array('realname', 'length', 'min' => 2, 'max' => 128),
             array('email', 'length', 'max' => 255),
             array('email', 'email'),
@@ -129,6 +129,20 @@ class User extends Model
             array('username, role, email, status, pinyin, abbreviation', 'safe'),
         );
     }
+
+    protected function beforeValidate()
+    {
+        if(!$this->isNewRecord)
+        {
+            if(empty($this->password))
+            {
+                $user = User::model()->findByPk($this->id);
+                $this->password = $user->password;
+            }
+        }
+        return parent::beforeValidate();
+    }
+
 
     protected function afterValidate()
     {
@@ -138,7 +152,7 @@ class User extends Model
             $this->abbreviation = PinYin::getPinYin($this->realname);
         }
 
-        parent::afterValidate();
+        return parent::afterValidate();
     }
 
     /**
@@ -154,6 +168,11 @@ class User extends Model
         }
         else
         {
+            $user = User::model()->findByPk($this->id);
+            if($this->password != $user->password)
+            {
+                $this->password = self::encrypt($this->password);
+            }
             $this->update_time = date(Option::model()->getDateFormatOpt());
         }
         return parent::beforeSave();
@@ -170,6 +189,7 @@ class User extends Model
             'id' => Yii::t('User', 'Id'),
             'username' => Yii::t('User', 'User Name'),
             'password' => Yii::t('User', 'Password'),
+            'password2' => Yii::t('User', 'Password2'),
             'realname' => Yii::t('User', 'Real Name'),
             'email' => Yii::t('User', 'Email'),
             'pinyin' => Yii::t('User', 'Pin Yin'),

@@ -40,6 +40,12 @@
             </div>
             <div class="row-fluid">
                 <?php
+                echo CHtml::activeLabel($user, 'password', array('class' => 'span1'));
+                echo CHtml::activePasswordField($user, 'password', array('class' => 'span3 focus'));
+                ?>
+            </div>
+            <div class="row-fluid">
+                <?php
                 echo CHtml::activeLabelEx($user, 'email', array('class' => 'span1'));
                 echo CHtml::activeTextField($user, 'email', array('class' => 'span3 focus'));
                 ?>

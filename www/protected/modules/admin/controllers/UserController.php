@@ -123,6 +123,7 @@ class UserController extends Controller
                     $this->redirect('/');
             }
         }
+        unset($user->password);
         $this->render('update', array(
             'user' => $user
         ));
