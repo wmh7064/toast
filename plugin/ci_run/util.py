@@ -211,8 +211,11 @@ class util:
 
     @staticmethod
     def ssh_sudo_run_command_return(cmd, host, user = None, pwd = None):
+    '''
+    todo
+    '''
         user 	= 'root'
-        pwd 	= 'tjj2tds'
+        pwd 	= 'root_password'
         return util.ssh_run_command_return(cmd, host, user, pwd)
 
     @staticmethod
