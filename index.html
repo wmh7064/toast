@@ -120,13 +120,22 @@
         <script>
             $(document).ready(function(){
                 var $window = $(window)
-                // side bar
-                $('.bs-docs-sidenav').affix({
-                    offset: {
-                        top: function () { return $window.width() <= 980 ? 290 : 240 }
-                        , bottom: 270
-                    }
-                })
+                if(!$.browser.msie || 8 < $.browser.version) {
+                    // side bar
+                    $('.bs-docs-sidenav').affix({
+                        offset: {
+                            top: function () { return $window.width() <= 980 ? 290 : 240 }
+                            , bottom: 270
+                        }
+                    })
+                } else {
+                    $(".bs-docs-sidebar").hide()
+                    $(".span9").removeClass("span9")
+                }
+                
+                if ($.browser.msie && 9 == $.browser.version){
+                    $(".bs-docs-sidenav a").css("width", "200px")
+                }
             })
         </script>
     </body>
