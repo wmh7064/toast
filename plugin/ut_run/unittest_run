@@ -87,10 +87,10 @@ class UnitTest:
         print "   --lua                       support lua test, copy the lcov.report.out to server\n"
 
         print"Examples of c/cpp makefile project:"
-        print"[ sudo /usr/local/toast/script/unittest_run -s \"http://svn.simba.taobao.com/svn/QA/automation/trunk/external/gtest-1.5.0/\" -k \"cd samples;sudo make coverage=yes\" -u \" ./samples/sample_unittest;./samples/sample1_unittest\" -y -H ]\n"
+        print"[ sudo /usr/local/toast/script/unittest_run -s \"http://xxxx/automation/trunk/external/gtest-1.5.0/\" -k \"cd samples;sudo make coverage=yes\" -u \" ./samples/sample_unittest;./samples/sample1_unittest\" -y -H ]\n"
 
         print"Examples of java maven project:"
-        print"[ sudo /usr/local/toast/script/unittest_run -s \"http://svn.simba.taobao.com/svn/Site/Brand/trunk/\" -u \"mvn clean test cobertura:cobertura \" -y -H -M ]\n"
+        print"[ sudo /usr/local/toast/script/unittest_run -s \"http://xxxx/svn/Site/Brand/trunk/\" -u \"mvn clean test cobertura:cobertura \" -y -H -M ]\n"
 
     def get_value(self,dictionary,key):
         return dictionary.get(key,'default') 
