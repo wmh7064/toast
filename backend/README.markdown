@@ -137,7 +137,7 @@ controller 配置文件
     udate_run_url = run/updaterun?                   // 更新单个任务的状态
     run_timer_task_url = api/runtaskbyid?            // 调用前端创建某个任务的一次运行api，多用于定时任务定时时间到时应用
     max_agent_number = 4096                          // 最大agent个数
-    CIAgent=cisvnmonitoragent                        // ci agent 的机器名，必须为机器名，所有ci监控任务都会发送到这个测试机
+    CIAgent=cisvnmonitoragent                        // ci agent必须为toast系统中这台机器的机器名，与toast中这台测试机显示的机器名要一致，所有ci监控任务都会发送到这个测试机
     [LOG]                             // log4cpp配置
     # --- categories ---
     log4cpp.rootCategory = DEBUG,MAIN
