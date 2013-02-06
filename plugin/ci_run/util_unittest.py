@@ -31,19 +31,19 @@ class UtilTest(unittest.TestCase):
 		self.assertTrue(string.find(out, 'tmp'))
 
 	def test_scp_file(self):
-		hostname = 'v132194.sqa.cm4.tbsite.net'
-		username = 'gongzhi'
-		password = 'Pwd_123'
-		file = '/home/gongzhi/.bash_profile'
+		hostname = 'hostname_or_ip'
+		username = 'user'
+		password = 'pwd'
+		file = '/home/user/.bash_profile'
 		util.scp_file(file, hostname, '/tmp', username, password)
 
-		file = '/home/gongzhi/logs'
+		file = '/home/user/logs'
 		util.scp_file(file, hostname, '/tmp', username, password)
 
 	def test_ssh_run(self):
-		hostname = 'v132194.sqa.cm4.tbsite.net'
-		username = 'gongzhi'
-		password = 'Pwd_123'
+		hostname = 'hostname_or_ip'
+		username = 'user'
+		password = 'Pwd'
 		command  = 'hostname'
 
 		out, err = util.ssh_run_command(command, hostname, username, password)
@@ -51,9 +51,9 @@ class UtilTest(unittest.TestCase):
 		self.assertTrue(out.find("v132194") == 0)
 
 	def test_ssh_sudo_run(self):
-		hostname = 'v132194.sqa.cm4.tbsite.net'
-		username = 'gongzhi'
-		password = 'Pwd_123'
+		hostname = 'hostname_or_ip'
+		username = 'user'
+		password = 'Pwd'
 		command  = 'whoami'
 
 		out, err = util.ssh_sudo_run_command(command, hostname, username, password)
@@ -61,9 +61,9 @@ class UtilTest(unittest.TestCase):
 		self.assertTrue(out.find('root') == 0)
 
 	def test_ssh_run_return(self):
-		hostname = 'v132193.sqa.cm4.tbsite.net'
-		username = 'gongzhi'
-		password = 'Pwd_123'
+		hostname = 'hostname_or_ip'
+		username = 'user'
+		password = 'Pwd'
 		command  = 'xxxx'
 		out, err, return_code = util.ssh_run_command_return(command, hostname, username, password)
 		self.assertTrue(len(err) > 0)
@@ -76,12 +76,12 @@ class UtilTest(unittest.TestCase):
 
 	def test_remote_co(self):
 		tar_dir = '/tmp/pythontest/'
-		svn_url = 'http://svn.simba.taobao.com/svn/QA/automation/trunk/rpm/'
-		svn_usr = 'ads'
-		svn_pwd = 'dsa543'
-		host = 'v132194.sqa.cm4.tbsite.net'
-		ssh_usr = 'gongzhi'
-		ssh_pwd = 'Pwd_123'
+		svn_url = 'http://xxx/svn/trunk/rpm/'
+		svn_usr = 'usr'
+		svn_pwd = 'pwd'
+		host = 'hostname_or_ip'
+		ssh_usr = 'user'
+		ssh_pwd = 'Pwd'
 
 		util.remote_check_out_code(host, ssh_usr, ssh_pwd, tar_dir, svn_url, svn_usr, svn_pwd)
 
