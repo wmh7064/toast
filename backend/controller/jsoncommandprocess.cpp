@@ -230,11 +230,13 @@ int CommandProcessor::SendCICommand(string command, int task_id, const string &c
 	 if(!info)   // no such agent
 	{
 	    Log::Error("There is no ci agent or agent is down");
-	    ActiveAgentsManager::Instance()->UnlockList();			
+	    ActiveAgentsManager::Instance()->UnlockList();	
+	    delete [] buf;
        	    return -1;
 	}
 	SendPacket(info, buf,  ci_cmd->length);
 	ActiveAgentsManager::Instance()->UnlockList();	
+	delete [] buf;
 
 }
 int CommandProcessor::SendCommandToAgent(int run_type, const string &account, 
@@ -289,7 +291,9 @@ int CommandProcessor::SendCommandToAgent(int run_type, const string &account,
 		{
 			Log::Error("Cancel failed, agent %s is down", agent_ip.c_str());
 		}
-	       ActiveAgentsManager::Instance()->UnlockList();			
+	       ActiveAgentsManager::Instance()->UnlockList();	
+		delete task;
+		delete [] buf;
        	return -1;
 	}
     // only the run command need to insert to the running list,
