@@ -314,8 +314,30 @@ void GetAgentInfo(AgentSystemInfo *info)
 }
 #else
 /*
-
+ linux System info 
 */
+#define PROC_CPUINFO     "/proc/cpuinfo"
+
+int GetProcessorNumber()
+{
+    int cpunumber = 0;
+    FILE* fp = 0;
+    if ((fp = fopen(PROC_CPUINFO, "r")) == NULL) 
+    {
+        Log::Error("Open /proc/cpuinfo failed");
+        return 0;	
+    }
+    char line[256];
+    while(fgets(line, sizeof(line), fp))
+    {
+        if(strstr(line, "processor"))
+        {
+            cpunumber++;
+        }
+    }
+    fclose(fp);
+    return cpunumber;
+}
 char * GetCanonname(char*canonname, int canonname_lenth, char * hostname)
 {
     struct addrinfo hint;
@@ -343,7 +365,7 @@ void GetAgentInfo(AgentSystemInfo *info)
        info->system        = "Unknown";
        info->release       = "Unknown";
        info->version       = "Unknown";
-       info->cpu           = "Unknown";
+       info->cpu           = "0";
        info->agent_version = AGENT_VERSION;
     }
     else
@@ -357,11 +379,14 @@ void GetAgentInfo(AgentSystemInfo *info)
 	{
 	    info->hostname = buf;
 	}
-		
+	int processor_number = GetProcessorNumber();
+	char numbuf[32];
+	memset(numbuf, 0, sizeof(numbuf));
+	snprintf(numbuf, sizeof(numbuf), "%d", processor_number);
 	info->system     = uts.sysname;
 	info->release      = uts.release;
 	info->version     = uts.version;
-	info->cpu           = uts.machine;
+	info->cpu           = string(numbuf);
 	info->agent_version      = AGENT_VERSION;
     	}
 }
