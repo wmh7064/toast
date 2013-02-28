@@ -148,7 +148,7 @@ void ThreadPool::PoolWait(int timeout_sec)
 }
 ThreadPool::ThreadPool(uint_t min_threads, uint_t max_threads, uint_t linger, pthread_attr_t *attr)
 {
-    (void) sigfillset(&m_fillset);
+    (void) sigprocmask(SIG_SETMASK, NULL, &m_fillset);
     (void) pthread_mutex_init(&m_pool_mutex, NULL);
     (void) pthread_cond_init(&m_pool_busycv, NULL);
     (void) pthread_cond_init(&m_pool_workcv, NULL);
@@ -247,14 +247,14 @@ void * ThreadPool::WorkerThreadRun(void *param)
     job_t *job;
     void *(*func)(void *);
     struct timespec ts;
-    // This is the worker¡¯s main loop. It will only be left
+    // This is the workerï¿½ï¿½s main loop. It will only be left
     // if a timeout occurs or if the pool is being destroyed.
     (void) pthread_mutex_lock(&pool->m_pool_mutex);
     pthread_cleanup_push(pool->WorkerCleanup, (void*)pool);
     //active.active_tid = pthread_self();
     while(1)
     {
-        //We don¡¯t know what this thread was doing during
+        //We donï¿½ï¿½t know what this thread was doing during
         // its last job, so we reset its signal mask and
         //cancellation state back to the initial values.
         (void) pthread_sigmask(SIG_SETMASK, &pool->m_fillset, NULL);
@@ -327,7 +327,7 @@ void ThreadPool::CloneAttributes(pthread_attr_t *new_attr, pthread_attr_t *old_a
     if (old_attr != NULL) 
     {
         (void) pthread_attr_getstack(old_attr, &addr, &size);
-        // don¡¯t allow a non-NULL thread stack address 
+        // donï¿½ï¿½t allow a non-NULL thread stack address 
         (void) pthread_attr_setstack(new_attr, NULL, size);
         (void) pthread_attr_getscope(old_attr, &value);
         (void) pthread_attr_setscope(new_attr, value);
