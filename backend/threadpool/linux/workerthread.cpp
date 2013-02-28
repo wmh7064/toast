@@ -73,7 +73,7 @@ int WorkerThread::AddWork(void *(*func)(void *), void *arg)
 
 WorkerThread::WorkerThread(pthread_attr_t *attr)
 {
-    (void) sigfillset(&m_fillset);
+    (void) sigprocmask(SIG_SETMASK, NULL, &m_fillset);
     (void) pthread_mutex_init(&m_worker_mutex, NULL);
     (void) pthread_cond_init(&m_worker_workcv, NULL);
     m_works.clear();
@@ -213,7 +213,7 @@ void WorkerThread::CloneAttributes(pthread_attr_t *new_attr, pthread_attr_t *old
     if (old_attr != NULL) 
     {
         (void) pthread_attr_getstack(old_attr, &addr, &size);
-        // don¡¯t allow a non-NULL thread stack address 
+        // donï¿½ï¿½t allow a non-NULL thread stack address 
         (void) pthread_attr_setstack(new_attr, NULL, size);
         (void) pthread_attr_getscope(old_attr, &value);
         (void) pthread_attr_setscope(new_attr, value);
