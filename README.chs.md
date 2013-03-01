@@ -6,7 +6,7 @@ TOAST是一个自动化测试执行系统，简单地说，这是一个可以在
 
 对于所有的自动化测试，使用统一的执行方式是困难的。特别是对于一个大型工程组织，例如阿里巴巴，如果想使用相同的执行平台，那么这个平台必须支持各种各样的自动化测试。这不是一件简单的事，但这也是我们为什么开发使用这个工具的原因之一。
 
-更多使用方面的帮助，参见 [用户使用手册](https://github.com/taobao/toast/wiki)
+更多使用方面的帮助，参见 [用户使用手册](https://github.com/alibaba/toast/wiki)
 
 ## Features
 
@@ -75,7 +75,7 @@ TOAST is a test execution system, and general speaking, it's a tool to run your 
 
 Automation of test execution can be a difficult service to provide in a universal way. For a large engineering organization to share common test execution infrastructure, that infrastructure must support execution of a variety of testing jobs. This is why we built TOAST at Taobao.
 
-For more usage information, see [User Guides](https://github.com/taobao/toast/wiki)
+For more usage information, see [User Guides](https://github.com/alibaba/toast/wiki)
 
 ## Features
 
