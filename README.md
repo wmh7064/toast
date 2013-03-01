@@ -5,7 +5,7 @@ TOAST is a test execution system, and general speaking, it's a tool to run your 
 
 Automation of test execution can be a difficult service to provide in a universal way. For a large engineering organization to share common test execution infrastructure, that infrastructure must support execution of a variety of testing jobs. This is why we built TOAST at Taobao.
 
-For more usage information, see [User Guides](https://github.com/taobao/toast/wiki)
+For more usage information, see [User Guides](https://github.com/alibaba/toast/wiki)
 
 ## Features
 
@@ -34,7 +34,7 @@ TOAST compose of three parts:
   * Back End, or Controller. {Linux}
   * Test Box, we call it as "test agent" or "agent". {Linux or Windows}
 
-for each part installation, see [Setup Part in User Guides](https://github.com/taobao/toast/wiki).
+for each part installation, see [Setup Part in User Guides](https://github.com/alibaba/toast/wiki).
 
 Here is the whole process,
   * write a script(shell, batch file etc) which can drive your test code running. 
@@ -51,7 +51,7 @@ TOAST can also monitor souce code depoit, like svn, once specific svn url is cha
 
 ## Bug tracker
 
-Have a bug or a feature request? [Please open a new issue](https://github.com/taobao/toast/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/taobao/toast/issue-guidelines).
+Have a bug or a feature request? [Please open a new issue](https://github.com/alibaba/toast/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/alibaba/toast/issue-guidelines).
 
 
 ## What's difference with Existing tool
