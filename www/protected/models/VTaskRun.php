@@ -177,14 +177,14 @@ class VTaskRun extends TaskRun
                         {
                              $content .= CHtml::tag('div', array('style' => 'text-left'), 
                                      $list['action']  . '  ' . $list['file']
-                                     . ' ' . CHtml::link('diff', $this->getDiffUrl($list),
+                                     . ' ' . CHtml::link('diff', $this->getDiffUrl($list, $log),
                                      array('target' => '_blank')), true);
                         }
                         else
                         {
                             $content .= CHtml::tag('div', array('style' => 'text-left'), 
                                      $list['action']  . '  ' . $list['file']
-                                     . ' ' . CHtml::link('diff', $this->getDiffUrl($list),
+                                     . ' ' . CHtml::link('diff', $this->getDiffUrl($list, $log),
                                      array('target' => '_blank')), true);                        
                         }
                     }
@@ -219,12 +219,19 @@ class VTaskRun extends TaskRun
         }
     }
     
-    private function getDiffUrl($list)
+    private function getDiffUrl($list, $log)
     {
         $link = '#';
         if(isset($list['diffurl']))
         {
             $link = $list['diffurl'];
+        }
+        else
+        {
+            $link = Yii::app()->params['diffPattern'];
+            $link = str_replace('$rb', $log['revisionbegin'], $link);
+            $link = str_replace('$re', $log['revisionend'], $link);
+            $link = str_replace('$file', $list['file'], $link);
         }
         return $link;
     }

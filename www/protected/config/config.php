@@ -98,6 +98,7 @@ return array(
         'caseRun' => '/home/ads/runcase/run_case', 
         'pageSize' => 5,
         'dateFormat' => 'Y-m-d H:i:s',
+        'diffPattern' => 'https://code.google.com/p/toast-test/source/diff?r=$re&format=side&path=$file',
 
         'smtp' => array(
             'host' => '127.0.0.1',
