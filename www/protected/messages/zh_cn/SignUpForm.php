@@ -22,5 +22,6 @@ return array(
     'Realname' => '真实名称',
     'Sign up success' => '注册成功',
     'Back to login' => '回到Toast登录页面',
+    'Username is not valid' => '用户名只包含字母，数字以及 _ . 并且以字母开头.',
 ); 
 ?>
